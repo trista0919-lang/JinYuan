@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>今園草堂 · 草堂走走</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root {
   --ink: #1e1a14;
@@ -17,7 +17,9 @@
   --paper-warm: #ede6d8;
   --paper-deep: #e0d6c4;
   --rust: #8b3a1f;
+  --rust-light: #c4634a;
   --gold: #9a7010;
+  --gold-light: #c8a040;
   --cream: #faf6ee;
 }
 
@@ -43,17 +45,25 @@ body {
   position: relative;
   background: var(--ink);
   padding: 40px 24px;
+  overflow: hidden;
 }
-.hero-content { z-index: 2; text-align: center; }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  opacity: .12;
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; text-align: center; }
 .hero-title {
-  font-size: clamp(48px, 10vw, 88px);
+  font-size: clamp(38px, 8vw, 64px);
   font-weight: 200;
   letter-spacing: .38em;
   color: var(--paper);
   margin-bottom: 16px;
 }
 .hero-sub {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 300;
   letter-spacing: .28em;
   color: rgba(245,240,230,.55);
@@ -64,7 +74,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(245,240,230,.95);
+  background: rgba(245,240,230,.92);
   backdrop-filter: blur(12px);
   border-bottom: .5px solid var(--ink-10);
   display: flex;
@@ -75,147 +85,227 @@ body {
 .nav-item {
   flex-shrink: 0;
   padding: 16px 20px;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--ink-60);
   cursor: pointer;
   white-space: nowrap;
-  font-weight: 400;
+  font-weight: 300;
+  transition: 0.3s;
+  letter-spacing: .1em;
 }
 .nav-item.active { color: var(--rust); border-bottom: 2px solid var(--rust); font-weight: 600; }
 
 /* ── SECTIONS ── */
-.section { padding: 100px 0; border-bottom: .5px solid var(--ink-10); scroll-margin-top: 60px; }
+.section {
+  padding: 80px 0;
+  border-bottom: .5px solid var(--ink-10);
+  scroll-margin-top: 60px;
+}
 .section:nth-child(even) { background: var(--cream); }
-.section-inner { max-width: 700px; margin: 0 auto; padding: 0 28px; }
+.section-inner { max-width: 720px; margin: 0 auto; padding: 0 28px; }
 
-.sec-header { display: flex; align-items: center; gap: 16px; margin-bottom: 30px; }
-.sec-emoji { font-size: 40px; line-height: 1; }
-.sec-name { font-size: 32px; font-weight: 500; letter-spacing: .1em; color: var(--ink); line-height: 1.2; }
-.sec-tagline { font-size: 14px; font-weight: 400; color: var(--rust); margin-top: 4px; letter-spacing: .2em; }
+.sec-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.sec-num {
+  font-size: 11px;
+  letter-spacing: .38em;
+  color: var(--ink-30);
+  font-family: 'Noto Sans TC', sans-serif;
+  padding-top: 14px;
+}
+.sec-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sec-emoji { font-size: 32px; line-height: 1; }
+.sec-name { font-size: 32px; font-weight: 200; letter-spacing: .12em; color: var(--ink); line-height: 1.2; }
+.sec-tagline { font-size: 13px; font-weight: 300; letter-spacing: .2em; color: var(--ink-60); display: block; margin-top: 4px; }
 
-.sec-body { font-size: 16px; color: var(--ink-85); letter-spacing: .05em; line-height: 2.1; margin-bottom: 30px; }
+.sec-rule { width: 32px; height: .5px; background: var(--rust-light); margin: 24px 0; opacity: .5; }
+
+.sec-body {
+  font-size: 15px;
+  line-height: 2.1;
+  color: var(--ink-60);
+  font-weight: 300;
+  margin-bottom: 25px;
+}
 
 .callout {
   background: var(--paper-warm);
-  border-left: 3px solid var(--gold);
-  padding: 24px;
-  margin: 40px 0;
-  border-radius: 0 8px 8px 0;
+  border-left: 2px solid var(--gold-light);
+  padding: 18px 22px;
+  margin: 25px 0;
+  border-radius: 0 4px 4px 0;
+}
+.callout p { font-size: 14px; color: var(--ink-60); font-weight: 300; }
+
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+.fact {
+  background: var(--paper-deep);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 11px;
+  color: var(--ink-60);
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
-/* 拍立得風格照片卡 (處理不好看的照片) */
-.photo-card {
-  background: white;
-  padding: 12px 12px 30px 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transform: rotate(-2deg);
-  width: 250px;
-  margin: 20px auto;
-  cursor: pointer;
+/* ── BUTTONS & INTERACTION ── */
+.ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding: 12px 20px;
+  border: .5px solid var(--ink-30);
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--ink);
   transition: 0.3s;
 }
-.photo-card:hover { transform: rotate(0deg) scale(1.05); }
-.photo-card img { width: 100%; height: 180px; object-fit: cover; background: #eee; }
-.photo-card span { display: block; text-align: center; margin-top: 10px; font-size: 12px; color: #777; font-family: sans-serif; }
+.ig-btn:hover { background: var(--ink); color: var(--paper); }
 
-/* ── IG MODAL 彈窗 ── */
-.modal {
+.interactive-zone {
+  padding: 24px;
+  background: rgba(30, 26, 20, 0.03);
+  border-radius: 8px;
+  margin-top: 10px;
+}
+.voice-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid var(--ink-10);
+  padding: 10px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.quiz-container p { margin-bottom: 12px; font-weight: 500; font-size: 14px; }
+.quiz-option {
+  display: block;
+  padding: 10px 16px;
+  background: white;
+  border: 1px solid var(--ink-10);
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+.quiz-option:hover { background: var(--paper-warm); }
+
+/* ── CUSTOM ALERT ── */
+#custom-alert {
   display: none;
   position: fixed;
-  z-index: 1000;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  background: rgba(0,0,0,0.5);
   align-items: center;
   justify-content: center;
   padding: 20px;
 }
-.modal-content {
-  background: white;
-  max-width: 800px;
+.alert-box {
+  background: var(--paper);
+  max-width: 400px;
   width: 100%;
-  border-radius: 12px;
-  display: flex;
+  border-radius: 8px;
   overflow: hidden;
-  max-height: 90vh;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
-.modal-img { flex: 1.2; background: #000; display: flex; align-items: center; justify-content: center; }
-.modal-img img { width: 100%; height: 100%; object-fit: contain; }
-.modal-info { flex: 1; padding: 24px; display: flex; flex-direction: column; overflow-y: auto; }
-.modal-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: 600; }
-.modal-close { position: absolute; top: 20px; right: 20px; color: white; font-size: 30px; cursor: pointer; }
-
-/* ── INTERACTIVE ── */
-.interactive-zone {
-  margin-top: 40px;
-  padding: 30px;
-  background: rgba(30, 26, 20, 0.02);
-  border-radius: 12px;
-  border: 1px dashed var(--ink-30);
-}
-.voice-btn {
-  display: flex; align-items: center; gap: 12px; background: white; border: 1px solid var(--ink-30);
-  padding: 10px 22px; border-radius: 30px; cursor: pointer; margin-bottom: 30px; font-size: 14px;
-}
-.ig-story-btn {
-  display: inline-block; text-align: center; background: var(--ink); color: var(--paper);
-  padding: 12px 24px; border-radius: 6px; text-decoration: none; font-size: 14px; margin-top: 10px;
+.alert-header { background: var(--ink); color: var(--paper); padding: 12px 20px; font-size: 13px; letter-spacing: .2em; }
+.alert-body { padding: 24px 20px; font-size: 15px; color: var(--ink); line-height: 1.6; }
+.alert-footer { padding: 12px 20px; text-align: right; border-top: 0.5px solid var(--ink-10); }
+.alert-close {
+  background: var(--rust);
+  color: white;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .modal-content { flex-direction: column; }
-  .modal-img { flex: none; height: 300px; }
-}
+.footer { background: var(--ink); padding: 60px 24px; text-align: center; color: var(--paper); }
 </style>
 </head>
 <body>
 
+<!-- Custom Alert -->
+<div id="custom-alert">
+  <div class="alert-box">
+    <div class="alert-header">ANSWER</div>
+    <div class="alert-body" id="alert-msg"></div>
+    <div class="alert-footer"><button class="alert-close" onclick="closeAlert()">確定</button></div>
+  </div>
+</div>
+
 <section class="hero">
+  <svg class="hero-bg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="#f5f0e6" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+      <path d="M120 580 Q117 530 114 490 Q110 440 116 390 Q120 355 117 310" stroke-width="4"/>
+      <path d="M680 580 Q678 545 675 510 Q672 470 676 435" stroke-width="4"/>
+    </g>
+  </svg>
   <div class="hero-content">
-    <div style="font-size:12px; letter-spacing:.5em; color:rgba(245,240,230,.4); margin-bottom:20px;">JINYUAN ORIGIN</div>
+    <div style="font-size:11px; letter-spacing:.5em; color:rgba(245,240,230,.3); margin-bottom:15px;">JINYUAN ORIGIN</div>
     <h1 class="hero-title">今 園 草 堂</h1>
     <p class="hero-sub">草 堂 走 走 · 十 二 個 角 落 的 實 踐</p>
   </div>
 </section>
 
 <nav class="nav-bar">
-  <div class="nav-item active" onclick="scrollToId('s00')">🚽 環保廁所</div>
-  <div class="nav-item" onclick="scrollToId('s01')">🍍 鳳梨酵素</div>
-  <div class="nav-item" onclick="scrollToId('s02')">💧 液肥製作</div>
-  <div class="nav-item" onclick="scrollToId('s03')">🌿 廚餘堆肥</div>
-  <div class="nav-item" onclick="scrollToId('s04')">🗼 蔬菜塔</div>
-  <div class="nav-item" onclick="scrollToId('s05')">🎋 竹林耕作</div>
+  <div class="nav-item active" onclick="scrollToId('s00')">🚽 環廁</div>
+  <div class="nav-item" onclick="scrollToId('s01')">🍍 酵素</div>
+  <div class="nav-item" onclick="scrollToId('s02')">💧 液肥</div>
+  <div class="nav-item" onclick="scrollToId('s03')">🌿 堆肥</div>
+  <div class="nav-item" onclick="scrollToId('s04')">🗼 菜塔</div>
+  <div class="nav-item" onclick="scrollToId('s05')">🎋 竹林</div>
   <div class="nav-item" onclick="scrollToId('s06')">🌾 隔離帶</div>
-  <div class="nav-item" onclick="scrollToId('s07')">🪿 白羅曼鵝</div>
-  <div class="nav-item" onclick="scrollToId('s08')">🐑 羊過貴妃</div>
-  <div class="nav-item" onclick="scrollToId('s09')">🐔 雞舍日常</div>
+  <div class="nav-item" onclick="scrollToId('s07')">🪿 羅曼鵝</div>
+  <div class="nav-item" onclick="scrollToId('s08')">🐑 羊過</div>
+  <div class="nav-item" onclick="scrollToId('s09')">🐔 雞舍</div>
   <div class="nav-item" onclick="scrollToId('s10')">🐸 生態池</div>
-  <div class="nav-item" onclick="scrollToId('s11')">🥬 韌性菜園</div>
+  <div class="nav-item" onclick="scrollToId('s11')">🥬 菜園</div>
 </nav>
 
 <!-- 00 環保廁所 -->
 <section class="section" id="s00">
   <div class="section-inner">
     <div class="sec-header">
-      <span class="sec-emoji">🚽</span>
-      <div class="sec-titles">
-        <span class="sec-name">環保廁所</span>
-        <span class="sec-tagline">肥水不落外人田的元老設施</span>
+      <span class="sec-num">00</span>
+      <div class="sec-title-group">
+        <span class="sec-emoji">🚽</span>
+        <div>
+          <span class="sec-name">環保廁所</span>
+          <span class="sec-tagline">草堂最坦誠的循環實踐</span>
+        </div>
       </div>
     </div>
+    <div class="sec-rule"></div>
     <div class="sec-body">
-      這是草堂的地元老設施，2014 年底竣工。以環塑木搭建，雖不華麗，卻承載著最坦誠的生態邏輯。
-      這是一種乾式廁所，完全用不到一滴水。只要按照圖示指引做，這個不沖水的馬桶，真的下一點都不臭喔！
+      這是草堂的地元老設施，2014 年底竣工。以環塑木搭建，雖不華麗，卻承載著「肥水不落外人田」的生態邏輯。將貢獻轉化為肥料，是農業循環最誠實的起點。
     </div>
     <div class="callout">
-      <p><b>運作原理：</b>以含碳量高的落葉、木屑、粗糠作為覆蓋物，處理如廁者的貢獻。透過堆肥分解，將人體養分循環成肥沃資源，回歸大地種樹種菜。你吃得越乾淨，產出的肥料就越健康！</p>
+      <p>完全不用一滴水沖馬桶。利用碳含量高的落葉、粗糠作為覆蓋物來處理貢獻，回歸大地。你吃得越乾淨，肥料就越健康。</p>
     </div>
-    <div class="photo-card" onclick="openModal('🚽 環保廁所紀實', '這是2014年落成時的樣子，雖然簡約，卻是循環的起點。', 'https://via.placeholder.com/600x800?text=Toilet+Photo')">
-      <img src="https://via.placeholder.com/300x200?text=Toilet" alt="環保廁所">
-      <span>2014.12 竣工紀錄</span>
-    </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
     <div class="interactive-zone">
-      <button class="voice-btn" onclick="this.nextElementSibling.play()">🎧 聽堂主說廁所故事<audio src="audio/s00.mp3"></audio></button>
-      <a href="javascript:void(0)" class="ig-story-btn" onclick="openModal('環保廁所','這裡是草堂最坦誠的循環實踐。不用一滴水，靠的是自然的力量。','https://via.placeholder.com/600x800?text=Toilet+Story')">📸 查看 IG 紀實</a>
+      <button class="voice-btn" onclick="this.nextElementSibling.play()">🎧 聽堂主紀實<audio src="audio/s00.mp3"></audio></button>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：環保廁所靠什麼來消除異味？</p>
+        <div class="quiz-option" onclick="showAlert('答錯囉！環保廁所強調不用水沖。')">A. 大量的水沖洗</div>
+        <div class="quiz-option" onclick="showAlert('答對了！落葉與粗糠能幫助分解並除臭。')">B. 落葉與粗糠</div>
+      </div>
     </div>
   </div>
 </section>
@@ -224,65 +314,89 @@ body {
 <section class="section" id="s01">
   <div class="section-inner">
     <div class="sec-header">
-      <span class="sec-emoji">🍍</span>
-      <div class="sec-titles">
-        <span class="sec-name">鳳梨酵素</span>
-        <span class="sec-tagline">給雞喝的天然消化飲</span>
+      <span class="sec-num">01</span>
+      <div class="sec-title-group">
+        <span class="sec-emoji">🍍</span>
+        <div>
+          <span class="sec-name">鳳梨酵素</span>
+          <span class="sec-tagline">給雞喝的天然消化飲</span>
+        </div>
       </div>
     </div>
+    <div class="sec-rule"></div>
     <div class="sec-body">
-      雞沒有牙齒，無咀嚼能力，主要靠體內的「肌胃」搭配啄食的砂礫來磨碎食物。因此養雞必須提供足夠的砂礫供其啄食。
-      更有甚者，草堂嘗試泡製「鳳梨酵素」，稀釋後供雞隻們飲用，希望能幫助牠們消化吸收，也同步減少雞糞的味道。
+      你知道雞沒有牙齒嗎？牠們沒有咀嚼能力，主要靠體內的「肌胃」搭配啄食的砂礫來磨碎食物——所以養雞除了給飼料，還要提供足夠的砂礫。草堂親手泡製鳳梨酵素，希望幫助牠們消化吸收，也讓雞舍的氣味更清爽。
     </div>
+    <div class="facts">
+      <span class="fact">天然發酵</span><span class="fact">改善消化</span><span class="fact">減少異味</span>
+    </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
     <div class="interactive-zone">
-      <a href="javascript:void(0)" class="ig-story-btn" onclick="openModal('鳳梨酵素','看看我們泡製的酵素，雞喝了都很健康。','https://via.placeholder.com/600x800?text=Enzyme+Story')">📸 查看雞隻飲用紀實</a>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：雞為什麼要喝鳳梨酵素？</p>
+        <div class="quiz-option" onclick="showAlert('這不是主因喔，幫助消化才是科學！')">A. 讓雞變得愛唱歌</div>
+        <div class="quiz-option" onclick="showAlert('答對了！酵素能幫助雞隻消化並環境除臭。')">B. 幫助消化並減少糞便異味</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 02 液肥製作 -->
+<!-- 02 液肥 -->
 <section class="section" id="s02">
   <div class="section-inner">
     <div class="sec-header">
-      <span class="sec-emoji">💧</span>
-      <div class="sec-titles">
-        <span class="sec-name">液肥製作</span>
-        <span class="sec-tagline">米糠豆渣發酵的田園秘方</span>
+      <span class="sec-num">02</span>
+      <div class="sec-title-group">
+        <span class="sec-emoji">💧</span>
+        <div>
+          <span class="sec-name">液肥製作</span>
+          <span class="sec-tagline">米糠豆渣發酵的田園秘方</span>
+        </div>
       </div>
     </div>
+    <div class="sec-rule"></div>
     <div class="sec-body">
-      配方：米糠 + 豆渣 + 糖蜜 + 水，加上適時攪拌。如果能加入若干山上的腐植土，效果更好。
-      充分發酵時常有撲鼻香氣，這氣味常吸引飛鳥、田鼠、四腳蛇進入「揾食」，但有時就不小心浸入其中，奉獻此身成為循環的一部分。
+      配方：米糠 + 豆渣 + 糖蜜 + 水，加上適時攪拌。充分發酵時常有撲鼻香氣，吸引飛鳥、田鼠靠近覓食——牠們有時候會不小心浸入其中，就此奉獻此身成為循環的一部分。大自然的循環，意外又真實。
     </div>
-    <div class="callout">
-      <p>歷時 2-4 週熟成，稀釋後用來澆灌蔬菜，效果非常顯著！</p>
+    <div class="facts">
+      <span class="fact">米糠 + 豆渣</span><span class="fact">糖蜜發酵</span><span class="fact">2-4 週熟成</span>
     </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
     <div class="interactive-zone">
-      <button class="voice-btn" onclick="this.nextElementSibling.play()">🎧 聽聽液肥發酵的動靜<audio src="audio/s02.mp3"></audio></button>
-      <a href="javascript:void(0)" class="ig-story-btn" onclick="openModal('液肥製作','發酵中的液肥，充滿了大自然的能量。','https://via.placeholder.com/600x800?text=Fertilizer')">📸 查看製作紀實</a>
+      <button class="voice-btn">👃 請聞聞看液肥的發酵香氣</button>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：液肥中最完美的配方還包含了什麼？</p>
+        <div class="quiz-option" onclick="showAlert('答對了！腐植土能增加菌種的多樣性。')">A. 山上的腐植土</div>
+        <div class="quiz-option" onclick="showAlert('答錯囉！發酵需要微生物而非實驗室純水。')">B. 實驗室純水</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 03 廚餘及雜草堆肥 -->
+<!-- 03 堆肥 -->
 <section class="section" id="s03">
   <div class="section-inner">
     <div class="sec-header">
-      <span class="sec-emoji">🌿</span>
-      <div class="sec-titles">
-        <span class="sec-name">廚餘雜草堆肥</span>
-        <span class="sec-tagline">兩戶廚餘的黑色金子</span>
+      <span class="sec-num">03</span>
+      <div class="sec-title-group">
+        <span class="sec-emoji">🌿</span>
+        <div>
+          <span class="sec-name">廚餘雜草堆肥</span>
+          <span class="sec-tagline">兩戶廚餘、一年時光，變回養分</span>
+        </div>
       </div>
     </div>
+    <div class="sec-rule"></div>
     <div class="sec-body">
-      堆肥幾個要素：適當碳氮比(30:1) + 日照 + 勿淋雨 + 適時翻動。
-      草堂堆肥區承載兩戶家庭的廚餘以及部分雜草，兩區共治。每區約歷時年餘，堆肥乃熟成。
+      堆肥關鍵：適當碳氮比(30:1)、充足日照、避免淋雨以及翻動。草堂堆肥區承載兩戶廚餘加上草堂雜草，歷時一年以上熟成——每次熟成約可抵兩千元有機肥的份量。在草堂，沒有廢物。
     </div>
-    <div class="callout">
-      <p>在草堂沒有廢物，只有放錯地方的資源。這堆「黑色金子」熟成後，每次大概可抵兩千元有機肥的價值。</p>
-    </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
     <div class="interactive-zone">
-      <a href="javascript:void(0)" class="ig-story-btn" onclick="openModal('廚餘堆肥','看這些熟成的土，多麼肥沃。','https://via.placeholder.com/600x800?text=Compost')">📸 查看翻堆紀錄</a>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：堆肥大約需要多久才能熟成？</p>
+        <div class="quiz-option" onclick="showAlert('太短了！有機物還沒法完全分解喔。')">A. 一個星期</div>
+        <div class="quiz-option" onclick="showAlert('答對了！堆肥需要時間緩慢分解。')">B. 約一年左右</div>
+      </div>
     </div>
   </div>
 </section>
@@ -291,21 +405,29 @@ body {
 <section class="section" id="s04">
   <div class="section-inner">
     <div class="sec-header">
-      <span class="sec-emoji">🗼</span>
-      <div class="sec-titles">
-        <span class="sec-name">蔬菜塔</span>
-        <span class="sec-tagline">網路影片與現實的辯證</span>
+      <span class="sec-num">04</span>
+      <div class="sec-title-group">
+        <span class="sec-emoji">🗼</span>
+        <div>
+          <span class="sec-name">蔬菜塔</span>
+          <span class="sec-tagline">網路說很美好，現實挺殘酷</span>
+        </div>
       </div>
     </div>
+    <div class="sec-rule"></div>
     <div class="sec-body">
-      網路影片欺我良多，付出真心之前請先驗證。那些免動力抽水、神奇機械裝置、水管立體種植，畫面很美好，現實挺殘酷。
-      農忙之餘我們也做點實驗——蔬菜塔於 2025.12 月誕生。
+      2025 年末誕生的蔬菜塔，是因應氣候衝擊的實驗。網路影片雖然畫面美好，實際操作卻充滿挑戰。蔬菜塔省水率達 95%，肥水不落地，是極端氣候下的省水利器。
     </div>
-    <div class="callout">
-      <p><b>初步成果：</b>成效如何尚在觀察，但省水率高達 95%，且肥水不落地，亦能自動收集成桶。這是因應氣候衝擊的實踐。</p>
+    <div class="facts">
+      <span class="fact">省水 95%</span><span class="fact">2025.12 誕生</span><span class="fact">實驗中</span>
     </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
     <div class="interactive-zone">
-      <a href="javascript:void(0)" class="ig-story-btn" onclick="openModal('蔬菜塔實驗','這就是我們的 2025 新實驗，雖然不一定成功，但值得一試。','https://via.placeholder.com/600x800?text=Tower')">📸 查看實驗過程</a>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：蔬菜塔最大的優勢是什麼？</p>
+        <div class="quiz-option" onclick="showAlert('這只是附帶的啦！')">A. 長得比較漂亮</div>
+        <div class="quiz-option" onclick="showAlert('答對了！極端氣候下省水才是王道。')">B. 省水率高達 95%</div>
+      </div>
     </div>
   </div>
 </section>
@@ -314,45 +436,55 @@ body {
 <section class="section" id="s05">
   <div class="section-inner">
     <div class="sec-header">
-      <span class="sec-emoji">🎋</span>
-      <div class="sec-titles">
-        <span class="sec-name">竹林</span>
-        <span class="sec-tagline">平地起高畦的林下經濟</span>
+      <span class="sec-num">05</span>
+      <div class="sec-title-group">
+        <span class="sec-emoji">🎋</span>
+        <div>
+          <span class="sec-name">竹林</span>
+          <span class="sec-tagline">平地起高畦，不用上山採筍</span>
+        </div>
       </div>
     </div>
+    <div class="sec-rule"></div>
     <div class="sec-body">
-      為了不用半夜起早上山採筍，草堂特闢一區平地起高畦種竹。甜龍竹及綠竹在此快樂長大，5-10 月是採筍季節。
-      12 月是修竹頭的日子：保留適量母竹及新竹，讓來年筍子有出頭的空間。
+      草堂平地起高畦種竹。甜龍竹與綠竹在這裡快樂生長，5 到 10 月是採筍季。12 月是修竹頭的日子：保留母竹及新竹，讓來年筍子有出頭空間。中間畦地則輪作玉米發揮經濟效益。
     </div>
-    <div class="callout">
-      <p><b>多層次利用：</b>此區種三壟竹，中間空閒畦地輪作玉米及季節蔬菜，完美發揮林下經濟。</p>
-    </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
     <div class="interactive-zone">
       <button class="voice-btn" onclick="this.nextElementSibling.play()">🎧 聽聽竹林的風聲<audio src="audio/s05.mp3"></audio></button>
-      <a href="javascript:void(0)" class="ig-story-btn" onclick="openModal('竹林','不管是甜龍竹還是綠竹，採收的喜悅最動人。','https://via.placeholder.com/600x800?text=Bamboo')">📸 查看採筍紀實</a>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：竹林中間空出的空地用來做什麼？</p>
+        <div class="quiz-option" onclick="showAlert('答錯囉！多層次利用才是草堂智慧。')">A. 蓋倉庫</div>
+        <div class="quiz-option" onclick="showAlert('答對了！輪作玉米與蔬菜。')">B. 輪作玉米與季節蔬菜</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 06 風箱隔離帶 -->
+<!-- 06 隔離帶 -->
 <section class="section" id="s06">
   <div class="section-inner">
     <div class="sec-header">
-      <span class="sec-emoji">🌾</span>
-      <div class="sec-titles">
-        <span class="sec-name">風箱隔離帶</span>
-        <span class="sec-tagline">從宜蘭帶回的守護守護者</span>
+      <span class="sec-num">06</span>
+      <div class="sec-title-group">
+        <span class="sec-emoji">🌾</span>
+        <div>
+          <span class="sec-name">風箱隔離帶</span>
+          <span class="sec-tagline">從宜蘭帶回的一根枝條</span>
+        </div>
       </div>
     </div>
+    <div class="sec-rule"></div>
     <div class="sec-body">
-      風箱多分布在宜蘭及北海岸。草堂這批是由園丁長在 2016.10 月，自宜蘭邱錦和老師園區帶回枝條扦插而成。
-      主要任務是隔絕西邊鄰田的農藥噴灑，避免污染到食用蔬果。
+      2016 年自宜蘭帶回枝條扦插而成。主要任務是形成隔離帶，阻絕鄰田農藥噴灑的飄散，避免污染草堂的食用蔬果。它是草堂的守護邊界，每年須修剪以維持菜園光照。
     </div>
-    <div class="callout">
-      <p>每年須修剪一兩次，以免影響鄰田田埂及草堂菜園的日照。它是沈默但關鍵的屏障。</p>
-    </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
     <div class="interactive-zone">
-      <a href="javascript:void(0)" class="ig-story-btn" onclick="openModal('隔離帶','看風箱草長得多茂密，保護著後方的菜園。','https://via.placeholder.com/600x800?text=Fence')">📸 查看修剪紀實</a>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：風箱隔離帶主要的功能是什麼？</p>
+        <div class="quiz-option" onclick="showAlert('雖然很美，但功能才是重點！')">A. 美觀裝飾</div>
+        <div class="quiz-option" onclick="showAlert('答對了！保護有機作物的第一道防線。')">B. 阻隔鄰田噴灑的農藥</div>
+      </div>
     </div>
   </div>
 </section>
@@ -361,67 +493,82 @@ body {
 <section class="section" id="s07">
   <div class="section-inner">
     <div class="sec-header">
-      <span class="sec-emoji">🪿</span>
-      <div class="sec-titles">
-        <span class="sec-name">白羅曼鵝</span>
-        <span class="sec-tagline">守土有責的四兄妹</span>
+      <span class="sec-num">07</span>
+      <div class="sec-title-group">
+        <span class="sec-emoji">🪿</span>
+        <div>
+          <span class="sec-name">白羅曼鵝</span>
+          <span class="sec-tagline">四兄妹，知恩圖報守土有責</span>
+        </div>
       </div>
     </div>
+    <div class="sec-rule"></div>
     <div class="sec-body">
-      壽命可達 10-30 年。咱們四兄妹是 2025.4 月進駐草堂。對於餵食的主人知恩圖報；對於陌生人則守土有責。
-      一般先對空嘶吼，接下來奉上「親吻」！
+      2025 年 4 月進駐。對主人知恩圖報；對外來人守土有責——一般先對空嘶吼，接下來奉上「親吻」——連誤闖的野狗也得退避三舍。壽命可達 10 到 30 年。
     </div>
-    <div class="callout">
-      <p>對於誤闖北院的野狗及「小龍」，咱們也能起到警戒及驅逐的效果。</p>
-    </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
     <div class="interactive-zone">
-      <a href="https://www.instagram.com/jinyuanorigin/" class="ig-story-btn">📸 查看鵝群日常 @jinyuanorigin</a>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：鵝群遇到陌生人第一反應是什麼？</p>
+        <div class="quiz-option" onclick="showAlert('我們可是很勇敢的守衛喔！')">A. 躲進水池裡</div>
+        <div class="quiz-option" onclick="showAlert('答對了！先對空嘶吼再奉上親吻是我們的風格。')">B. 對空嘶吼與警戒</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 08 羊過與貴妃 -->
+<!-- 08 羊過 -->
 <section class="section" id="s08">
   <div class="section-inner">
     <div class="sec-header">
-      <span class="sec-emoji">🐑</span>
-      <div class="sec-titles">
-        <span class="sec-name">羊過與貴妃</span>
-        <span class="sec-tagline">2025 年進駐的新住民</span>
+      <span class="sec-num">08</span>
+      <div class="sec-title-group">
+        <span class="sec-emoji">🐑</span>
+        <div>
+          <span class="sec-name">羊過與貴妃</span>
+          <span class="sec-tagline">土山羊新住民</span>
+        </div>
       </div>
     </div>
+    <div class="sec-rule"></div>
     <div class="sec-body">
-      你好！我們是羊過與羊貴妃，2025.8.12 進駐草堂。剛來時過了幾個月無拘無束的日子，香蕉、火龍果、山藥盡皆美味。
-      後來園丁長發現狀況不對（植物都被吃光啦！），連夜趕工在 2026 元旦搭建好羊舍。
+      2025 年 8 月進駐。曾有無拘無束的日子，但也因吃掉一片香蕉與山藥，迫使園丁長在 2026 年元旦搭建好羊舍。牠們是草堂最頑皮的除草員。
     </div>
-    <div class="callout">
-      <p>羊依用途可分：綿羊、肉羊、乳羊，我們是土山羊（肉用），是很早移民到福爾摩沙的品種喔。</p>
-    </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
     <div class="interactive-zone">
-      <a href="https://www.instagram.com/jinyuanorigin/" class="ig-story-btn">📸 標記羊羊限動 @jinyuanorigin</a>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：為什麼園丁長要在元旦連夜搭建羊舍？</p>
+        <div class="quiz-option" onclick="showAlert('雖然是新住民，但那是為了保護香蕉和山藥喔！')">A. 當作羊羊的新年禮物</div>
+        <div class="quiz-option" onclick="showAlert('答對了！因為羊羊快把園裡的美味植物吃光啦。')">B. 保護園裡的香蕉、火龍果與山藥</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 09 雞舍日常 -->
+<!-- 09 雞舍 -->
 <section class="section" id="s09">
   <div class="section-inner">
     <div class="sec-header">
-      <span class="sec-emoji">🐔</span>
-      <div class="sec-titles">
-        <span class="sec-name">雞舍日常</span>
-        <span class="sec-tagline">讓雞頤養天年的家</span>
+      <span class="sec-num">09</span>
+      <div class="sec-title-group">
+        <span class="sec-emoji">🐔</span>
+        <div>
+          <span class="sec-name">雞舍日常</span>
+          <span class="sec-tagline">沙浴棲架，讓雞快樂生活</span>
+        </div>
       </div>
     </div>
+    <div class="sec-rule"></div>
     <div class="sec-body">
-      雞壽命 3-5 年。母雞產蛋高峰期在 6-20 個月大，草堂母雞可頤養天年，不像蛋雞場會汰弱換強。
-      雞舍配有沙浴區、棲架、產房，低密度養殖，分三區避免老鳥霸凌菜鳥。
+      草堂母雞頤養天年，不似蛋雞場強汰。雞舍配備沙浴、棲架、產房，低密度養殖。雞是夜盲，日落前跳上棲架，是農場最平靜的風景。
     </div>
-    <div class="callout">
-      <p>雞是夜盲，日落前會跳到高處棲息。下蛋喜在陰暗安全處，所以我們特別營造產房環境。</p>
-    </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
     <div class="interactive-zone">
-      <a href="https://www.instagram.com/jinyuanorigin/" class="ig-story-btn">📸 標記雞舍日誌 @jinyuanorigin</a>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：雞舍為什麼要準備專屬的「產房」？</p>
+        <div class="quiz-option" onclick="showAlert('是給母雞下蛋用的喔！')">A. 讓小雞躲雨</div>
+        <div class="quiz-option" onclick="showAlert('答對了！雞下蛋喜在陰暗安全處，所以要營造產房環境。')">B. 雞喜歡在陰暗安全處下蛋</div>
+      </div>
     </div>
   </div>
 </section>
@@ -430,112 +577,92 @@ body {
 <section class="section" id="s10">
   <div class="section-inner">
     <div class="sec-header">
-      <span class="sec-emoji">🐸</span>
-      <div class="sec-titles">
-        <span class="sec-name">生態池</span>
-        <span class="sec-tagline">百人一鏟手作之池</span>
+      <span class="sec-num">10</span>
+      <div class="sec-title-group">
+        <span class="sec-emoji">🐸</span>
+        <div>
+          <span class="sec-name">生態池</span>
+          <span class="sec-tagline">三年、百人次、皆手作</span>
+        </div>
       </div>
     </div>
+    <div class="sec-rule"></div>
     <div class="sec-body">
-      耗時三年，近百人次，一磚一鏟皆是手作，於 2017 年底初成。
-      三大目的：淨化外來溝渠水源、提供小生物棲息地、景觀美化。
+      耗時三年，一磚一鏟皆手作。三大目的：淨化水源、提供小生物棲息地、創造景觀。種有藺草、蓮花、野薑花等，它是草堂的肺，也是生命避風港。
     </div>
-    <div class="callout">
-      <p><b>池內植有：</b>藺草、蓮花、睡蓮、野薑花、粉綠狐尾草等。<br><b>池陸植有：</b>穗花棋盤腳、射干、雞蛋花、桑葚、柳樹等。</p>
-    </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
     <div class="interactive-zone">
       <button class="voice-btn" onclick="this.nextElementSibling.play()">🎧 聽聽生態池的蟲鳴<audio src="audio/s10.mp3"></audio></button>
-      <a href="javascript:void(0)" class="ig-story-btn" onclick="openModal('生態池','這是草堂的肺，也是無數生命的避風港。','https://via.placeholder.com/600x800?text=Pond')">📸 查看建造紀實</a>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：生態池主要的三大目的是什麼？</p>
+        <div class="quiz-option" onclick="showAlert('答對了！淨化、棲息與景觀。')">A. 淨化水源、棲息地、景觀</div>
+        <div class="quiz-option" onclick="showAlert('雖然可以洗，但那不是建造初衷喔！')">B. 存雨水來洗澡</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 11 韌性菜園 -->
+<!-- 11 菜園 -->
 <section class="section" id="s11">
   <div class="section-inner">
     <div class="sec-header">
-      <span class="sec-emoji">🥬</span>
-      <div class="sec-titles">
-        <span class="sec-name">韌性菜園</span>
-        <span class="sec-tagline">與強降雨共處的性格</span>
+      <span class="sec-num">11</span>
+      <div class="sec-title-group">
+        <span class="sec-emoji">🥬</span>
+        <div>
+          <span class="sec-name">韌性菜園</span>
+          <span class="sec-tagline">與強降雨共處的韌性</span>
+        </div>
       </div>
     </div>
+    <div class="sec-rule"></div>
     <div class="sec-body">
-      草堂位於大安溪下游，距出海口僅 2 公里。梅雨季或颱風時，外水位上升導致田區排水宣洩不及。
-      園區每年總要積水幾次，喬木無妨，但短期蔬菜沒有長腳，只能拉高位階因應。
+      距海 2 公里，颱風豪雨必積水。喬木無妨，但短期蔬菜沒有長腳，只能拉高位階。「韌性」，是這片菜園與極端氣候抗衡最重要的性格。
     </div>
-    <div class="callout">
-      <p>「韌性」，是這片菜園因應極端氣候衝擊最重要的性格。拉高蔬菜的位階，是我們對土地的應變之道。</p>
-    </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
     <div class="interactive-zone">
-      <a href="javascript:void(0)" class="ig-story-btn" onclick="openModal('韌性菜園','看這高畦種植法，是為了保護蔬菜不被淹沒。','https://via.placeholder.com/600x800?text=Garden')">📸 查看菜園應變紀實</a>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：為什麼菜園要把「位階拉高」？</p>
+        <div class="quiz-option" onclick="showAlert('這只是附帶的啦，主要為了排水！')">A. 比較好採收</div>
+        <div class="quiz-option" onclick="showAlert('答對了！避免強降雨淹死蔬菜。')">B. 避免強降雨導致積水</div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- 紀實牆 Padlet -->
 <section class="section" style="background:var(--paper-deep);">
   <div class="section-inner">
-    <h3 style="margin-bottom:30px; letter-spacing:.1em;">📝 草堂紀實牆</h3>
+    <div class="sec-header">
+      <div class="sec-title-group">
+        <span class="sec-emoji">📸</span>
+        <span class="sec-name">草堂紀實牆</span>
+      </div>
+    </div>
+    <p style="font-size:14px; color:var(--ink-60); margin-bottom:20px;">歡迎在這裡分享你拍下的草堂美好角落</p>
     <iframe src="https://padlet.com/trista0919/padlet-ezlj6wik5qfkswgg" width="100%" height="550" frameborder="0" style="background:white; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.08);"></iframe>
-    <p style="font-size:13px; text-align:center; margin-top:20px; color:var(--ink-60);">歡迎在這裡留下你的觀察與照片</p>
   </div>
 </section>
 
 <footer class="footer">
-  <div class="footer-logo">今 園 草 堂</div>
-  <div style="font-size:10px; opacity:.4; letter-spacing:.5em; margin-bottom:30px;">JINYUAN ORIGIN</div>
+  <div class="footer-logo" style="font-size:24px; font-weight:200; letter-spacing:.4em; margin-bottom:10px;">今 園 草 堂</div>
+  <div style="font-size:10px; opacity:.4; letter-spacing:.5em;">JINYUAN ORIGIN · TAICHUNG</div>
 </footer>
 
-<!-- Modal 彈窗結構 -->
-<div id="igModal" class="modal">
-  <span class="modal-close" onclick="closeModal()">&times;</span>
-  <div class="modal-content">
-    <div class="modal-img">
-      <img id="modalImg" src="" alt="">
-    </div>
-    <div class="modal-info">
-      <div class="modal-header">
-        <div style="width:30px; height:30px; border-radius:50%; background:var(--rust);"></div>
-        今園草堂 Jinyuan Origin
-      </div>
-      <p id="modalTitle" style="font-weight:600; font-size:18px; margin-bottom:10px;"></p>
-      <p id="modalDesc" style="font-size:14px; color:#555; line-height:1.6;"></p>
-      <div style="margin-top:auto; font-size:12px; color:#999; border-top:1px solid #eee; padding-top:10px;">
-        📍 台中大安區 · 綠色保育農場
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-function openModal(title, desc, imgSrc) {
-  document.getElementById('modalTitle').innerText = title;
-  document.getElementById('modalDesc').innerText = desc;
-  document.getElementById('modalImg').src = imgSrc;
-  document.getElementById('igModal').style.display = 'flex';
-  document.body.style.overflow = 'hidden'; // 防止捲動
+function showAlert(msg) {
+  document.getElementById('alert-msg').innerText = msg;
+  document.getElementById('custom-alert').style.display = 'flex';
 }
-
-function closeModal() {
-  document.getElementById('igModal').style.display = 'none';
-  document.body.style.overflow = 'auto';
-}
-
-// 點擊彈窗外部關閉
-window.onclick = function(event) {
-  if (event.target == document.getElementById('igModal')) {
-    closeModal();
-  }
+function closeAlert() {
+  document.getElementById('custom-alert').style.display = 'none';
 }
 
 function scrollToId(id) {
   const element = document.getElementById(id);
   if (element) {
     const navHeight = document.querySelector('.nav-bar').offsetHeight;
-    window.scrollTo({
-      top: element.offsetTop - navHeight,
-      behavior: "smooth"
-    });
+    window.scrollTo({ top: element.offsetTop - navHeight, behavior: "smooth" });
   }
 }
 
@@ -544,18 +671,15 @@ window.addEventListener('scroll', () => {
   const sections = document.querySelectorAll('section.section[id]');
   const navItems = document.querySelectorAll('.nav-item');
   const navHeight = document.querySelector('.nav-bar').offsetHeight;
-
   sections.forEach(section => {
     if (pageYOffset >= section.offsetTop - navHeight - 20) {
       current = section.getAttribute('id');
     }
   });
-
   navItems.forEach(item => {
     item.classList.remove('active');
     if (item.getAttribute('onclick').includes(current)) {
       item.classList.add('active');
-      item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }
   });
 });
