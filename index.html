@@ -264,22 +264,22 @@ body {
 </section>
 
 <nav class="nav-bar">
-  <div class="nav-item active" onclick="scrollToId('s00')">🚽 環保廁所</div>
-  <div class="nav-item" onclick="scrollToId('s01')">🍍 鳳梨酵素</div>
-  <div class="nav-item" onclick="scrollToId('s02')">💧 液肥製作</div>
-  <div class="nav-item" onclick="scrollToId('s03')">🌿 堆肥廚餘</div>
-  <div class="nav-item" onclick="scrollToId('s04')">🗼 蔬菜塔</div>
-  <div class="nav-item" onclick="scrollToId('s05')">🎋 竹林</div>
-  <div class="nav-item" onclick="scrollToId('s06')">🌾 風箱隔離帶</div>
-  <div class="nav-item" onclick="scrollToId('s07')">🦢 白鵝</div>
-  <div class="nav-item" onclick="scrollToId('s08')">🐑 羊羊們</div>
-  <div class="nav-item" onclick="scrollToId('s09')">🐔 雞舍</div>
-  <div class="nav-item" onclick="scrollToId('s10')">🐸 生態池</div>
-  <div class="nav-item" onclick="scrollToId('s11')">🥬 菜園</div>
+  <div class="nav-item active" onclick="scrollToId('toilet')">🚽 環保廁所</div>
+  <div class="nav-item" onclick="scrollToId('enzyme')">🍍 鳳梨酵素</div>
+  <div class="nav-item" onclick="scrollToId('liquidfert')">💧 液肥製作</div>
+  <div class="nav-item" onclick="scrollToId('compost')">🌿 堆肥廚餘</div>
+  <div class="nav-item" onclick="scrollToId('tower')">🗼 蔬菜塔</div>
+  <div class="nav-item" onclick="scrollToId('bamboo')">🎋 竹林</div>
+  <div class="nav-item" onclick="scrollToId('windbreak')">🌾 風箱隔離帶</div>
+  <div class="nav-item" onclick="scrollToId('goose')">🦢 白鵝</div>
+  <div class="nav-item" onclick="scrollToId('sheep')">🐑 羊羊們</div>
+  <div class="nav-item" onclick="scrollToId('chicken')">🐔 雞舍</div>
+  <div class="nav-item" onclick="scrollToId('pond')">🐸 生態池</div>
+  <div class="nav-item" onclick="scrollToId('garden')">🥬 菜園</div>
 </nav>
 
 <!-- 00 環保廁所 -->
-<section class="section" id="s00">
+<section class="section" id="toilet">
   <div class="section-inner">
     <div class="sec-header">
       <span class="sec-num">00</span>
@@ -298,6 +298,84 @@ body {
     <div class="callout">
       <p>完全不用一滴水沖馬桶。利用碳含量高的落葉、粗糠作為覆蓋物來處理貢獻，回歸大地。你吃得越乾淨，肥料就越健康。</p>
     </div>
+
+    <!-- 循環圖 SVG -->
+    <div style="margin: 28px 0;">
+      <svg viewBox="0 0 480 280" width="100%" style="max-width:480px; display:block; margin:0 auto;">
+        <!-- 背景圓形軌道 -->
+        <circle cx="240" cy="140" r="100" fill="none" stroke="#e0d6c4" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+        <!-- 節點：上廁所 -->
+        <g>
+          <circle cx="240" cy="36" r="34" fill="#ede6d8" stroke="#c4634a" stroke-width="1"/>
+          <text x="240" y="30" text-anchor="middle" font-size="18" font-family="serif">🚽</text>
+          <text x="240" y="50" text-anchor="middle" font-size="11" fill="#5c4f3a" font-family="Noto Serif TC,serif" font-weight="400">上廁所</text>
+        </g>
+
+        <!-- 節點：落葉粗糠覆蓋 -->
+        <g>
+          <circle cx="374" cy="107" r="34" fill="#ede6d8" stroke="#c4634a" stroke-width="1"/>
+          <text x="374" y="101" text-anchor="middle" font-size="18" font-family="serif">🍂</text>
+          <text x="374" y="117" text-anchor="middle" font-size="10" fill="#5c4f3a" font-family="Noto Serif TC,serif">落葉粗糠</text>
+          <text x="374" y="129" text-anchor="middle" font-size="10" fill="#5c4f3a" font-family="Noto Serif TC,serif">覆蓋分解</text>
+        </g>
+
+        <!-- 節點：堆肥熟成 -->
+        <g>
+          <circle cx="374" cy="196" r="34" fill="#ede6d8" stroke="#c4634a" stroke-width="1"/>
+          <text x="374" y="190" text-anchor="middle" font-size="18" font-family="serif">🌱</text>
+          <text x="374" y="210" text-anchor="middle" font-size="10" fill="#5c4f3a" font-family="Noto Serif TC,serif">自然分解</text>
+          <text x="374" y="222" text-anchor="middle" font-size="10" fill="#5c4f3a" font-family="Noto Serif TC,serif">堆肥熟成</text>
+        </g>
+
+        <!-- 節點：種植 -->
+        <g>
+          <circle cx="240" cy="244" r="34" fill="#ede6d8" stroke="#c4634a" stroke-width="1"/>
+          <text x="240" y="238" text-anchor="middle" font-size="18" font-family="serif">🥬</text>
+          <text x="240" y="258" text-anchor="middle" font-size="11" fill="#5c4f3a" font-family="Noto Serif TC,serif">施肥種植</text>
+        </g>
+
+        <!-- 節點：飲食 -->
+        <g>
+          <circle cx="106" cy="196" r="34" fill="#ede6d8" stroke="#c4634a" stroke-width="1"/>
+          <text x="106" y="190" text-anchor="middle" font-size="18" font-family="serif">🍽️</text>
+          <text x="106" y="210" text-anchor="middle" font-size="11" fill="#5c4f3a" font-family="Noto Serif TC,serif">採收飲食</text>
+        </g>
+
+        <!-- 節點：人體吸收 -->
+        <g>
+          <circle cx="106" cy="107" r="34" fill="#ede6d8" stroke="#c4634a" stroke-width="1"/>
+          <text x="106" y="101" text-anchor="middle" font-size="18" font-family="serif">🧑‍🌾</text>
+          <text x="106" y="117" text-anchor="middle" font-size="10" fill="#5c4f3a" font-family="Noto Serif TC,serif">人體吸收</text>
+          <text x="106" y="129" text-anchor="middle" font-size="10" fill="#5c4f3a" font-family="Noto Serif TC,serif">代謝養分</text>
+        </g>
+
+        <!-- 箭頭弧線 (順時針) -->
+        <defs>
+          <marker id="arr-c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M2 2L8 5L2 8" fill="none" stroke="#c4634a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+        </defs>
+        <!-- 上 → 右上 -->
+        <path d="M268 55 Q320 60 348 82" fill="none" stroke="#c4634a" stroke-width="1" marker-end="url(#arr-c)"/>
+        <!-- 右上 → 右下 -->
+        <path d="M374 142 L374 160" fill="none" stroke="#c4634a" stroke-width="1" marker-end="url(#arr-c)"/>
+        <!-- 右下 → 下 -->
+        <path d="M348 218 Q300 245 274 247" fill="none" stroke="#c4634a" stroke-width="1" marker-end="url(#arr-c)"/>
+        <!-- 下 → 左下 -->
+        <path d="M206 247 Q160 245 132 218" fill="none" stroke="#c4634a" stroke-width="1" marker-end="url(#arr-c)"/>
+        <!-- 左下 → 左上 -->
+        <path d="M106 160 L106 142" fill="none" stroke="#c4634a" stroke-width="1" marker-end="url(#arr-c)"/>
+        <!-- 左上 → 上 -->
+        <path d="M132 82 Q185 55 210 48" fill="none" stroke="#c4634a" stroke-width="1" marker-end="url(#arr-c)"/>
+
+        <!-- 中央文字 -->
+        <text x="240" y="133" text-anchor="middle" font-size="11" fill="#8b3a1f" font-family="Noto Serif TC,serif" font-weight="400">肥水</text>
+        <text x="240" y="148" text-anchor="middle" font-size="11" fill="#8b3a1f" font-family="Noto Serif TC,serif" font-weight="400">不落外人田</text>
+      </svg>
+      <p style="text-align:center; font-size:11px; color:rgba(30,26,20,.35); letter-spacing:.15em; margin-top:4px; font-family:'Noto Sans TC',sans-serif;">上廁所 不必沖馬桶 · 一個完整的生態循環</p>
+    </div>
+
     <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
     <div class="interactive-zone">
       <button class="voice-btn" onclick="this.nextElementSibling.play()">🎧 聽堂主紀實<audio src="audio/s00.mp3"></audio></button>
@@ -311,7 +389,7 @@ body {
 </section>
 
 <!-- 01 鳳梨酵素 -->
-<section class="section" id="s01">
+<section class="section" id="enzyme">
   <div class="section-inner">
     <div class="sec-header">
       <span class="sec-num">01</span>
@@ -342,7 +420,7 @@ body {
 </section>
 
 <!-- 02 液肥 -->
-<section class="section" id="s02">
+<section class="section" id="liquidfert">
   <div class="section-inner">
     <div class="sec-header">
       <span class="sec-num">02</span>
@@ -374,7 +452,7 @@ body {
 </section>
 
 <!-- 03 堆肥 -->
-<section class="section" id="s03">
+<section class="section" id="compost">
   <div class="section-inner">
     <div class="sec-header">
       <span class="sec-num">03</span>
@@ -402,7 +480,7 @@ body {
 </section>
 
 <!-- 04 蔬菜塔 -->
-<section class="section" id="s04">
+<section class="section" id="tower">
   <div class="section-inner">
     <div class="sec-header">
       <span class="sec-num">04</span>
@@ -433,7 +511,7 @@ body {
 </section>
 
 <!-- 05 竹林 -->
-<section class="section" id="s05">
+<section class="section" id="bamboo">
   <div class="section-inner">
     <div class="sec-header">
       <span class="sec-num">05</span>
@@ -462,7 +540,7 @@ body {
 </section>
 
 <!-- 06 隔離帶 -->
-<section class="section" id="s06">
+<section class="section" id="windbreak">
   <div class="section-inner">
     <div class="sec-header">
       <span class="sec-num">06</span>
@@ -490,7 +568,7 @@ body {
 </section>
 
 <!-- 07 白羅曼鵝 -->
-<section class="section" id="s07">
+<section class="section" id="goose">
   <div class="section-inner">
     <div class="sec-header">
       <span class="sec-num">07</span>
@@ -518,7 +596,7 @@ body {
 </section>
 
 <!-- 08 羊過 -->
-<section class="section" id="s08">
+<section class="section" id="sheep">
   <div class="section-inner">
     <div class="sec-header">
       <span class="sec-num">08</span>
@@ -546,7 +624,7 @@ body {
 </section>
 
 <!-- 09 雞舍 -->
-<section class="section" id="s09">
+<section class="section" id="chicken">
   <div class="section-inner">
     <div class="sec-header">
       <span class="sec-num">09</span>
@@ -574,7 +652,7 @@ body {
 </section>
 
 <!-- 10 生態池 -->
-<section class="section" id="s10">
+<section class="section" id="pond">
   <div class="section-inner">
     <div class="sec-header">
       <span class="sec-num">10</span>
@@ -603,7 +681,7 @@ body {
 </section>
 
 <!-- 11 菜園 -->
-<section class="section" id="s11">
+<section class="section" id="garden">
   <div class="section-inner">
     <div class="sec-header">
       <span class="sec-num">11</span>
