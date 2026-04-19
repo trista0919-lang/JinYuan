@@ -6,6 +6,18 @@
 <title>今園草堂 · 草堂走走</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+.interactive-zone {
+  margin-top: 24px;
+  background: rgba(30, 26, 20, 0.03);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px dashed var(--ink-30);
+}
+.voice-btn { ... }
+.quiz-container { ... }
+.quiz-option { ... }
+.ig-story-btn { ... }
+
 <style>
 :root {
   --ink: #1e1a14;
@@ -446,6 +458,13 @@ body {
 .ig-action-btn:hover:not(.primary) { background: var(--paper-warm); }
 .ig-action-btn.primary:hover { background: var(--rust); border-color: var(--rust); }
 
+<section class="section">
+  <div class="section-inner">
+    <h3 style="margin-bottom:20px;">📝 草堂紀實牆</h3>
+    <iframe src="https://padlet.com/trista0919/padlet-ezlj6wik5qfkswgg" width="100%" height="480" frameborder="0" style="background:transparent; border-radius:8px;"></iframe>
+    <p style="font-size:12px; text-align:center; margin-top:10px;">歡迎上傳你的照片或留言，這會即時出現在這裡喔！</p>
+  </div>
+</section>
 /* ── FOOTER ── */
 .footer {
   background: var(--ink);
@@ -611,7 +630,24 @@ body {
     <a href="https://www.instagram.com/jinyuan_caotang/" class="ig-btn">查看建造紀實 →</a>
   </div>
 </section>
-
+<!-- 00 環保廁所 -->
+<section class="section" id="s00">
+  <div class="section-inner">
+    <div class="sec-header">
+      <span class="sec-emoji">🚽</span>
+      <div class="sec-titles"><span class="sec-name">環保廁所</span><span class="sec-tagline">草堂元老設施</span></div>
+    </div>
+    <div class="sec-body">2014年竣工，以環塑木搭建，落葉、粗糠覆蓋，肥水不落外人田。</div>
+    <div class="interactive-zone">
+      <button class="voice-btn" onclick="this.nextElementSibling.play()">🎧 聽堂主紀實<audio src="audio/s00.mp3"></audio></button>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：環保廁所靠什麼來消除異味？</p>
+        <div class="quiz-option" onclick="alert('答對了！落葉與粗糠能幫助分解並除臭。')">A. 大量的水沖洗</div>
+        <div class="quiz-option" onclick="alert('答對了！落葉與粗糠能幫助分解並除臭。')">B. 落葉、木屑與粗糠</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- 01 鳳梨酵素 -->
 <section class="section" id="s01">
@@ -640,6 +676,23 @@ body {
       <svg class="ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       查看紀實貼文
     </a>
+  </div>
+</section>
+<!-- 01 鳳梨酵素 -->
+<section class="section" id="s01">
+  <div class="section-inner">
+    <div class="sec-header">
+      <span class="sec-emoji">🍍</span>
+      <div class="sec-titles"><span class="sec-name">鳳梨酵素</span><span class="sec-tagline">天然消化飲</span></div>
+    </div>
+    <div class="sec-body">改善雞隻消化吸收，減少雞糞異味。</div>
+    <div class="interactive-zone">
+      <div class="quiz-container">
+        <p>💡 堂主考考你：雞為什麼要喝鳳梨酵素？</p>
+        <div class="quiz-option" onclick="alert('答對了！酵素能幫助雞隻消化並環境除臭。')">A. 讓雞變得愛唱歌</div>
+        <div class="quiz-option" onclick="alert('答對了！酵素能幫助雞隻消化並環境除臭。')">B. 幫助消化並減少糞便異味</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -675,6 +728,24 @@ body {
     </a>
   </div>
 </section>
+<!-- 02 液肥 -->
+<section class="section" id="s02">
+  <div class="section-inner">
+    <div class="sec-header">
+      <span class="sec-emoji">💧</span>
+      <div class="sec-titles"><span class="sec-name">液肥</span><span class="sec-tagline">撲鼻香氣的土地特調</span></div>
+    </div>
+    <div class="sec-body">米糠+豆渣+糖蜜，2-4周熟成，稀釋澆灌效果好。</div>
+    <div class="interactive-zone">
+      <button class="voice-btn" onclick="this.nextElementSibling.play()">🎧 聽聽液肥發酵的動靜<audio src="audio/s02.mp3"></audio></button>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：液肥中最完美的配方還包含了什麼？</p>
+        <div class="quiz-option" onclick="alert('答對了！腐植土能增加菌種的多樣性。')">A. 山上的腐植土</div>
+        <div class="quiz-option" onclick="alert('答對了！腐植土能增加菌種的多樣性。')">B. 自來水</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- 03 廚餘堆肥 -->
 <section class="section" id="s03">
@@ -706,6 +777,23 @@ body {
     </a>
   </div>
 </section>
+<!-- 03 廚餘堆肥 -->
+<section class="section" id="s03">
+  <div class="section-inner">
+    <div class="sec-header">
+      <span class="sec-emoji">🌿</span>
+      <div class="sec-titles"><span class="sec-name">廚餘堆肥</span><span class="sec-tagline">循環的力量</span></div>
+    </div>
+    <div class="sec-body">適當碳氮比(30:1)+翻動，熟成可抵兩千元有機肥。</div>
+    <div class="interactive-zone">
+      <div class="quiz-container">
+        <p>💡 堂主考考你：堆肥大約需要多久才能熟成？</p>
+        <div class="quiz-option" onclick="alert('答對了！堆肥需要時間緩慢分解。')">A. 一個星期</div>
+        <div class="quiz-option" onclick="alert('答對了！堆肥需要時間緩慢分解。')">B. 約一年左右</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- 04 蔬菜塔 -->
 <section class="section" id="s04">
@@ -735,6 +823,23 @@ body {
       <svg class="ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       查看紀實貼文
     </a>
+  </div>
+</section>
+<!-- 04 蔬菜塔 -->
+<section class="section" id="s04">
+  <div class="section-inner">
+    <div class="sec-header">
+      <span class="sec-emoji">🗼</span>
+      <div class="sec-titles"><span class="sec-name">蔬菜塔</span><span class="sec-tagline">省水95%的實驗</span></div>
+    </div>
+    <div class="sec-body">肥水不落地，省水率極高，現實與網路的辯證。</div>
+    <div class="interactive-zone">
+      <div class="quiz-container">
+        <p>💡 堂主考考你：蔬菜塔最大的優勢是什麼？</p>
+        <div class="quiz-option" onclick="alert('答對了！這是極端氣候下的省水利器。')">A. 長得比較高比較漂亮</div>
+        <div class="quiz-option" onclick="alert('答對了！這是極端氣候下的省水利器。')">B. 省水率高達 95%</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -769,6 +874,25 @@ body {
   </div>
 </section>
 
+<!-- 05 竹林 -->
+<section class="section" id="s05">
+  <div class="section-inner">
+    <div class="sec-header">
+      <span class="sec-emoji">🎋</span>
+      <div class="sec-titles"><span class="sec-name">竹林</span><span class="sec-tagline">林下經濟學</span></div>
+    </div>
+    <div class="sec-body">平地起高畦種竹，5-10月採筍，中间輪作玉米。</div>
+    <div class="interactive-zone">
+      <button class="voice-btn" onclick="this.nextElementSibling.play()">🎧 聽聽竹林的風聲<audio src="audio/s05.mp3"></audio></button>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：竹林中間空出的空地用來做什麼？</p>
+        <div class="quiz-option" onclick="alert('答對了！多層次利用土地就是林下經濟。')">A. 蓋倉庫</div>
+        <div class="quiz-option" onclick="alert('答對了！多層次利用土地就是林下經濟。')">B. 輪作玉米與季節蔬菜</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 06 風箱隔離帶 -->
 <section class="section" id="s06">
   <div class="section-inner">
@@ -796,6 +920,23 @@ body {
       <svg class="ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       查看紀實貼文
     </a>
+  </div>
+</section>
+<!-- 06 風箱隔離帶 -->
+<section class="section" id="s06">
+  <div class="section-inner">
+    <div class="sec-header">
+      <span class="sec-emoji">🌾</span>
+      <div class="sec-titles"><span class="sec-name">風箱隔離帶</span><span class="sec-tagline">綠色守護邊界</span></div>
+    </div>
+    <div class="sec-body">自宜蘭帶回扦插，隔絕鄰田農藥，每年修剪兩次。</div>
+    <div class="interactive-zone">
+      <div class="quiz-container">
+        <p>💡 堂主考考你：風箱隔離帶主要的功能是什麼？</p>
+        <div class="quiz-option" onclick="alert('答對了！這是保護有機作物的第一道防線。')">A. 當作木材販售</div>
+        <div class="quiz-option" onclick="alert('答對了！這是保護有機作物的第一道防線。')">B. 阻隔鄰田噴灑的農藥</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -827,6 +968,19 @@ body {
       <svg class="ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       查看紀實貼文
     </a>
+  </div>
+<!-- 07 白羅曼鵝 -->
+<section class="section" id="s07">
+  <div class="section-inner">
+    <div class="sec-header">
+      <span class="sec-emoji">🪿</span>
+      <div class="sec-titles"><span class="sec-name">白羅曼鵝</span><span class="sec-tagline">熱情的迎賓四兄妹</span></div>
+    </div>
+    <div class="sec-body">壽命可達10-30年，守土有責，能警戒驅逐小龍與野狗。</div>
+    <div class="interactive-zone">
+      <p>📸 挑戰任務：找出鵝群中的老大，拍張照標記我們！</p>
+      <a href="https://www.instagram.com/jinyuan_caotang/" class="ig-story-btn">📸 PO 限動並標記 @jinyuan_caotang</a>
+    </div>
   </div>
 </section>
 
@@ -861,7 +1015,21 @@ body {
       查看紀實貼文
     </a>
   </div>
+<!-- 08 土山羊 -->
+<section class="section" id="s08">
+  <div class="section-inner">
+    <div class="sec-header">
+      <span class="sec-emoji">🐑</span>
+      <div class="sec-titles"><span class="sec-name">羊過與貴妃</span><span class="sec-tagline">土山羊新住民</span></div>
+    </div>
+    <div class="sec-body">為了保護香蕉連夜趕工，2026元旦搭建完成的溫馨羊舍。</div>
+    <div class="interactive-zone">
+      <p>📸 任務：捕捉羊過與貴妃「無辜」的表情，分享到 IG！</p>
+      <a href="https://www.instagram.com/jinyuan_caotang/" class="ig-story-btn">📸 標記羊羊限動 @jinyuan_caotang</a>
+    </div>
+  </div>
 </section>
+
 
 <!-- 09 雞舍日常 -->
 <section class="section" id="s09">
@@ -894,6 +1062,19 @@ body {
       <svg class="ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       查看紀實貼文
     </a>
+  </div>
+<!-- 09 雞舍 -->
+<section class="section" id="s09">
+  <div class="section-inner">
+    <div class="sec-header">
+      <span class="sec-emoji">🐔</span>
+      <div class="sec-titles"><span class="sec-name">雞舍日常</span><span class="sec-tagline">頤養天年的智慧</span></div>
+    </div>
+    <div class="sec-body">配有沙浴區、棲架、產房，低密度快樂養殖。</div>
+    <div class="interactive-zone">
+      <p>📸 任務：母雞下蛋時喜在陰暗處，找找看產房在哪裡？</p>
+      <a href="https://www.instagram.com/jinyuan_caotang/" class="ig-story-btn">📸 拍下快樂雞舍 @jinyuan_caotang</a>
+    </div>
   </div>
 </section>
 
@@ -929,6 +1110,23 @@ body {
       查看紀實貼文
     </a>
   </div>
+<!-- 10 生態池 -->
+<section class="section" id="s10">
+  <div class="section-inner">
+    <div class="sec-header">
+      <span class="sec-emoji">🐸</span>
+      <div class="sec-titles"><span class="sec-name">生態池</span><span class="sec-tagline">百人一鏟手作</span></div>
+    </div>
+    <div class="sec-body">耗時三年初成，植有藺草、蓮花、睡蓮，淨化水質。</div>
+    <div class="interactive-zone">
+      <button class="voice-btn" onclick="this.nextElementSibling.play()">🎧 聽聽生態池的蟲鳴鳥叫<audio src="audio/s10.mp3"></audio></button>
+      <div class="quiz-container">
+        <p>💡 堂主考考你：生態池主要的三大目的是什麼？</p>
+        <div class="quiz-option" onclick="alert('答對了！它是草堂最重要的水體循環中心。')">A. 淨化水源、棲息地、景觀</div>
+        <div class="quiz-option" onclick="alert('答對了！它是草堂最重要的水體循環中心。')">B. 存雨水來洗澡</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- 11 韌性菜園 -->
@@ -959,6 +1157,22 @@ body {
       <svg class="ig-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       查看紀實貼文
     </a>
+  </div>
+<!-- 11 韌性菜園 -->
+<section class="section" id="s11">
+  <div class="section-inner">
+    <div class="sec-header">
+      <span class="sec-emoji">🥬</span>
+      <div class="sec-titles"><span class="sec-name">韌性菜園</span><span class="sec-tagline">高位階耕作</span></div>
+    </div>
+    <div class="sec-body">距出海口2公里，抗積水、因應極端氣候的韌性農法。</div>
+    <div class="interactive-zone">
+      <div class="quiz-container">
+        <p>💡 堂主考考你：為什麼菜園要把「位階拉高」？</p>
+        <div class="quiz-option" onclick="alert('答對了！這樣菜才不會在淹水時泡爛喔！')">A. 這樣比較好採收</div>
+        <div class="quiz-option" onclick="alert('答對了！這樣菜才不會在淹水時泡爛喔！')">B. 避免強降雨導致積水宣洩不及</div>
+      </div>
+    </div>
   </div>
 </section>
 
