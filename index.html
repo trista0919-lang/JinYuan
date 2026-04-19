@@ -171,12 +171,6 @@ body {
 }
 .ig-btn:hover { background: var(--ink); color: var(--paper); }
 
-.interactive-zone {
-  padding: 24px;
-  background: rgba(30, 26, 20, 0.03);
-  border-radius: 8px;
-  margin-top: 10px;
-}
 .voice-btn {
   display: flex;
   align-items: center;
@@ -186,68 +180,43 @@ body {
   padding: 10px 18px;
   border-radius: 30px;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-size: 14px;
   font-family: inherit;
 }
-.quiz-container p { margin-bottom: 12px; font-weight: 500; font-size: 14px; }
-.quiz-option {
-  display: block;
-  padding: 10px 16px;
-  background: white;
-  border: 1px solid var(--ink-10);
-  margin-bottom: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  border-radius: 4px;
-  transition: 0.2s;
+.fun-fact {
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--ink-30);
+  letter-spacing: .05em;
+  line-height: 1.75;
+  margin: 16px 0 20px;
+  padding-left: 12px;
+  border-left: 1.5px solid var(--paper-deep);
 }
-.quiz-option:hover { background: var(--paper-warm); }
+.mission {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #f0f7ee;
+  border: .5px solid #b8d8b0;
+  border-left: 3px solid #4a8a3f;
+  border-radius: 0 6px 6px 0;
+  padding: 14px 16px;
+  margin: 0 0 24px;
+}
+.mission-icon { font-size: 18px; flex-shrink: 0; line-height: 1.4; }
+.mission-text { font-size: 13px; color: #2d5a27; line-height: 1.75; font-weight: 300; letter-spacing: .04em; }
+.mission-label { font-size: 9px; letter-spacing: .38em; color: #4a8a3f; font-family: 'Noto Sans TC', sans-serif; display: block; margin-bottom: 4px; font-weight: 400; }
 
-/* ── CUSTOM ALERT ── */
-#custom-alert {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: rgba(0,0,0,0.5);
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.alert-box {
-  background: var(--paper);
-  max-width: 400px;
-  width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-.alert-header { background: var(--ink); color: var(--paper); padding: 12px 20px; font-size: 13px; letter-spacing: .2em; }
-.alert-body { padding: 24px 20px; font-size: 15px; color: var(--ink); line-height: 1.6; }
-.alert-footer { padding: 12px 20px; text-align: right; border-top: 0.5px solid var(--ink-10); }
-.alert-close {
-  background: var(--rust);
-  color: white;
-  border: none;
-  padding: 8px 24px;
-  border-radius: 4px;
-  cursor: pointer;
-}
+<!-- no alert needed -->
 
 .footer { background: var(--ink); padding: 60px 24px; text-align: center; color: var(--paper); }
 </style>
 </head>
 <body>
 
-<!-- Custom Alert -->
-<div id="custom-alert">
-  <div class="alert-box">
-    <div class="alert-header">ANSWER</div>
-    <div class="alert-body" id="alert-msg"></div>
-    <div class="alert-footer"><button class="alert-close" onclick="closeAlert()">確定</button></div>
-  </div>
-</div>
+
 
 <section class="hero">
   <svg class="hero-bg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
@@ -259,7 +228,7 @@ body {
   <div class="hero-content">
     <div style="font-size:11px; letter-spacing:.5em; color:rgba(245,240,230,.3); margin-bottom:15px;">JINYUAN ORIGIN</div>
     <h1 class="hero-title">今 園 草 堂</h1>
-    <p class="hero-sub">草 堂 走 走 · 十 二 個 角 落 的 實 踐</p>
+    <p class="hero-sub">草 堂 走 走 · 十 三 個 角 落 的 實 踐</p>
   </div>
 </section>
 
@@ -276,6 +245,7 @@ body {
   <div class="nav-item" onclick="scrollToId('chicken')">🐔 雞舍</div>
   <div class="nav-item" onclick="scrollToId('pond')">🐸 生態池</div>
   <div class="nav-item" onclick="scrollToId('garden')">🥬 菜園</div>
+  <div class="nav-item" onclick="scrollToId('oven')">🍕 麵包磚窯</div>
 </nav>
 
 <!-- 00 環保廁所 -->
@@ -377,14 +347,12 @@ body {
     </div>
 
     <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
-    <div class="interactive-zone">
-      <button class="voice-btn" onclick="this.nextElementSibling.play()">🎧 聽堂主紀實<audio src="audio/s00.mp3"></audio></button>
-      <div class="quiz-container">
+    <p class="fun-fact">小知識：台灣每人每天平均沖馬桶 5 次，光這一件事就用掉約 30–45 公升的水。環保廁所完全不需要一滴。</p>
+     <div class="quiz-container">
         <p>💡 堂主考考你：環保廁所靠什麼來消除異味？</p>
         <div class="quiz-option" onclick="showAlert('答錯囉！環保廁所強調不用水沖。')">A. 大量的水沖洗</div>
         <div class="quiz-option" onclick="showAlert('答對了！落葉與粗糠能幫助分解並除臭。')">B. 落葉與粗糠</div>
       </div>
-    </div>
   </div>
 </section>
 
@@ -408,14 +376,15 @@ body {
     <div class="facts">
       <span class="fact">天然發酵</span><span class="fact">改善消化</span><span class="fact">減少異味</span>
     </div>
-    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
-    <div class="interactive-zone">
-      <div class="quiz-container">
-        <p>💡 堂主考考你：雞為什麼要喝鳳梨酵素？</p>
-        <div class="quiz-option" onclick="showAlert('這不是主因喔，幫助消化才是科學！')">A. 讓雞變得愛唱歌</div>
-        <div class="quiz-option" onclick="showAlert('答對了！酵素能幫助雞隻消化並環境除臭。')">B. 幫助消化並減少糞便異味</div>
+    <p class="fun-fact">小知識：鳳梨中的「鳳梨蛋白酶」能分解蛋白質——這也是為什麼吃太多鳳梨嘴巴會麻，因為它也在分解你的口腔黏膜。</p>
+    <div class="mission">
+      <span class="mission-icon">👉</span>
+      <div class="mission-text">
+        <span class="mission-label">現場任務</span>
+        找找看鳳梨酵素的桶子在哪裡，靠近聞一下——你覺得像什麼味道？甜的還是酸的？
       </div>
     </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
   </div>
 </section>
 
@@ -439,15 +408,15 @@ body {
     <div class="facts">
       <span class="fact">米糠 + 豆渣</span><span class="fact">糖蜜發酵</span><span class="fact">2-4 週熟成</span>
     </div>
-    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
-    <div class="interactive-zone">
-      <button class="voice-btn">👃 請聞聞看液肥的發酵香氣</button>
-      <div class="quiz-container">
-        <p>💡 堂主考考你：液肥中最完美的配方還包含了什麼？</p>
-        <div class="quiz-option" onclick="showAlert('答對了！腐植土能增加菌種的多樣性。')">A. 山上的腐植土</div>
-        <div class="quiz-option" onclick="showAlert('答錯囉！發酵需要微生物而非實驗室純水。')">B. 實驗室純水</div>
+    <p class="fun-fact">小知識：液肥發酵產生的乳酸菌和酵母菌，和你吃的優格、麵包裡的菌是同類——只是它們的工作是養蔬菜。</p>
+    <div class="mission">
+      <span class="mission-icon">👉</span>
+      <div class="mission-text">
+        <span class="mission-label">現場任務</span>
+        靠近液肥桶聞聞看——香？臭？還是有點像醬油？把你的答案告訴堂主，看看你的形容最準。
       </div>
     </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
   </div>
 </section>
 
@@ -468,7 +437,7 @@ body {
     <div class="sec-body">
       堆肥關鍵：適當碳氮比(30:1)、充足日照、避免淋雨以及翻動。草堂堆肥區承載兩戶廚餘加上草堂雜草，歷時一年以上熟成——每次熟成約可抵兩千元有機肥的份量。在草堂，沒有廢物。
     </div>
-    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
+    <p class="fun-fact">小知識：堆肥中心的溫度可高達 60–70°C，比洗澡水還燙——這個熱度能自然殺死雜草種子，讓肥料更乾淨。</p>
     <div class="interactive-zone">
       <div class="quiz-container">
         <p>💡 堂主考考你：堆肥大約需要多久才能熟成？</p>
@@ -476,10 +445,9 @@ body {
         <div class="quiz-option" onclick="showAlert('答對了！堆肥需要時間緩慢分解。')">B. 約一年左右</div>
       </div>
     </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
   </div>
 </section>
-
-<!-- 04 蔬菜塔 -->
 <section class="section" id="tower">
   <div class="section-inner">
     <div class="sec-header">
@@ -499,7 +467,7 @@ body {
     <div class="facts">
       <span class="fact">省水 95%</span><span class="fact">2025.12 誕生</span><span class="fact">實驗中</span>
     </div>
-    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
+    <p class="fun-fact">小知識：傳統農業灌溉的用水，有高達 60% 在到達植物根部之前就已蒸發或流失——蔬菜塔的密閉循環讓每一滴水都用在刀口上。</p>
     <div class="interactive-zone">
       <div class="quiz-container">
         <p>💡 堂主考考你：蔬菜塔最大的優勢是什麼？</p>
@@ -507,6 +475,7 @@ body {
         <div class="quiz-option" onclick="showAlert('答對了！極端氣候下省水才是王道。')">B. 省水率高達 95%</div>
       </div>
     </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
   </div>
 </section>
 
@@ -527,15 +496,15 @@ body {
     <div class="sec-body">
       草堂平地起高畦種竹。甜龍竹與綠竹在這裡快樂生長，5 到 10 月是採筍季。12 月是修竹頭的日子：保留母竹及新竹，讓來年筍子有出頭空間。中間畦地則輪作玉米發揮經濟效益。
     </div>
-    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
-    <div class="interactive-zone">
-      <button class="voice-btn" onclick="this.nextElementSibling.play()">🎧 聽聽竹林的風聲<audio src="audio/s05.mp3"></audio></button>
-      <div class="quiz-container">
-        <p>💡 堂主考考你：竹林中間空出的空地用來做什麼？</p>
-        <div class="quiz-option" onclick="showAlert('答錯囉！多層次利用才是草堂智慧。')">A. 蓋倉庫</div>
-        <div class="quiz-option" onclick="showAlert('答對了！輪作玉米與蔬菜。')">B. 輪作玉米與季節蔬菜</div>
+    <p class="fun-fact">小知識：竹子不是樹，是草。世界上生長最快的植物，最快紀錄一天可長 91 公分——幾乎是你每小時能看見它在長。</p>
+    <div class="mission">
+      <span class="mission-icon">👉</span>
+      <div class="mission-text">
+        <span class="mission-label">現場任務</span>
+        走進竹林，在地上找找看有沒有剛冒出來的小筍尖——它可能就藏在落葉下，用腳輕輕撥開找找看。
       </div>
     </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
   </div>
 </section>
 
@@ -556,14 +525,15 @@ body {
     <div class="sec-body">
       2016 年自宜蘭帶回枝條扦插而成。主要任務是形成隔離帶，阻絕鄰田農藥噴灑的飄散，避免污染草堂的食用蔬果。它是草堂的守護邊界，每年須修剪以維持菜園光照。
     </div>
-    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
-    <div class="interactive-zone">
-      <div class="quiz-container">
-        <p>💡 堂主考考你：風箱隔離帶主要的功能是什麼？</p>
-        <div class="quiz-option" onclick="showAlert('雖然很美，但功能才是重點！')">A. 美觀裝飾</div>
-        <div class="quiz-option" onclick="showAlert('答對了！保護有機作物的第一道防線。')">B. 阻隔鄰田噴灑的農藥</div>
+    <p class="fun-fact">小知識：農藥飄散（農藥漂移）可隨風飄移數十至數百公尺——一排植物隔離帶，是有機農場最低成本的自我保護。</p>
+    <div class="mission">
+      <span class="mission-icon">👉</span>
+      <div class="mission-text">
+        <span class="mission-label">現場任務</span>
+        站在隔離帶前，往西邊的鄰田望過去——想像沒有這排植物時，農藥風一吹過來的樣子。
       </div>
     </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
   </div>
 </section>
 
@@ -584,18 +554,19 @@ body {
     <div class="sec-body">
       2025 年 4 月進駐。對主人知恩圖報；對外來人守土有責——一般先對空嘶吼，接下來奉上「親吻」——連誤闖的野狗也得退避三舍。壽命可達 10 到 30 年。
     </div>
-    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
-    <div class="interactive-zone">
-      <div class="quiz-container">
-        <p>💡 堂主考考你：鵝群遇到陌生人第一反應是什麼？</p>
-        <div class="quiz-option" onclick="showAlert('我們可是很勇敢的守衛喔！')">A. 躲進水池裡</div>
-        <div class="quiz-option" onclick="showAlert('答對了！先對空嘶吼再奉上親吻是我們的風格。')">B. 對空嘶吼與警戒</div>
+    <p class="fun-fact">小知識：鵝的記憶力比狗還強，能記住每個人的臉長達數年。牠們認得出你——第二次來，牠們的反應可能完全不一樣。(只是可能而已)</p>
+    <div class="mission">
+      <span class="mission-icon">👉</span>
+      <div class="mission-text">
+        <span class="mission-label">現場任務</span>
+        試著蹲低身體，讓自己跟鵝等高，然後慢慢靠近——看看牠的眼睛，感受一下被認真打量的感覺。
       </div>
     </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
   </div>
 </section>
 
-<!-- 08 羊過 -->
+<!-- 08 羊過與羊貴妃 -->
 <section class="section" id="sheep">
   <div class="section-inner">
     <div class="sec-header">
@@ -603,7 +574,7 @@ body {
       <div class="sec-title-group">
         <span class="sec-emoji">🐑</span>
         <div>
-          <span class="sec-name">羊過與貴妃</span>
+          <span class="sec-name">羊過與羊貴妃</span>
           <span class="sec-tagline">土山羊新住民</span>
         </div>
       </div>
@@ -612,14 +583,15 @@ body {
     <div class="sec-body">
       2025 年 8 月進駐。曾有無拘無束的日子，但也因吃掉一片香蕉與山藥，迫使園丁長在 2026 年元旦搭建好羊舍。牠們是草堂最頑皮的除草員。
     </div>
-    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
-    <div class="interactive-zone">
-      <div class="quiz-container">
-        <p>💡 堂主考考你：為什麼園丁長要在元旦連夜搭建羊舍？</p>
-        <div class="quiz-option" onclick="showAlert('雖然是新住民，但那是為了保護香蕉和山藥喔！')">A. 當作羊羊的新年禮物</div>
-        <div class="quiz-option" onclick="showAlert('答對了！因為羊羊快把園裡的美味植物吃光啦。')">B. 保護園裡的香蕉、火龍果與山藥</div>
+    <p class="fun-fact">小知識：羊沒有上排門牙，只有下排——牠們靠下牙配合上顎的硬肉墊來撕草，一天可以吃掉相當於自己體重 3–4% 的植物。</p>
+    <div class="mission">
+      <span class="mission-icon">👉</span>
+      <div class="mission-text">
+        <span class="mission-label">現場任務</span>
+        👉 現在去摸摸羊過的背，感受一下毛有多硬
       </div>
     </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
   </div>
 </section>
 
@@ -640,14 +612,15 @@ body {
     <div class="sec-body">
       草堂母雞頤養天年，不似蛋雞場強汰。雞舍配備沙浴、棲架、產房，低密度養殖。雞是夜盲，日落前跳上棲架，是農場最平靜的風景。
     </div>
-    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
-    <div class="interactive-zone">
-      <div class="quiz-container">
-        <p>💡 堂主考考你：雞舍為什麼要準備專屬的「產房」？</p>
-        <div class="quiz-option" onclick="showAlert('是給母雞下蛋用的喔！')">A. 讓小雞躲雨</div>
-        <div class="quiz-option" onclick="showAlert('答對了！雞下蛋喜在陰暗安全處，所以要營造產房環境。')">B. 雞喜歡在陰暗安全處下蛋</div>
+    <p class="fun-fact">小知識：雞的體溫高達 41°C，比人類高整整 4 度——而且牠們是夜盲，視力在日落後幾乎歸零，所以傍晚會自己走回雞舍，完全不需要人趕。</p>
+    <div class="mission">
+      <span class="mission-icon">👉</span>
+      <div class="mission-text">
+        <span class="mission-label">現場任務</span>
+        來數看看現在雞舍裡有幾隻雞?問問堂主有沒有正在孵養的小雞呢?
       </div>
     </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
   </div>
 </section>
 
@@ -668,15 +641,15 @@ body {
     <div class="sec-body">
       耗時三年，一磚一鏟皆手作。三大目的：淨化水源、提供小生物棲息地、創造景觀。種有藺草、蓮花、野薑花等，它是草堂的肺，也是生命避風港。
     </div>
-    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
-    <div class="interactive-zone">
-      <button class="voice-btn" onclick="this.nextElementSibling.play()">🎧 聽聽生態池的蟲鳴<audio src="audio/s10.mp3"></audio></button>
-      <div class="quiz-container">
-        <p>💡 堂主考考你：生態池主要的三大目的是什麼？</p>
-        <div class="quiz-option" onclick="showAlert('答對了！淨化、棲息與景觀。')">A. 淨化水源、棲息地、景觀</div>
-        <div class="quiz-option" onclick="showAlert('雖然可以洗，但那不是建造初衷喔！')">B. 存雨水來洗澡</div>
+    <p class="fun-fact">小知識：青蛙對農藥和水質極度敏感，是天然的環境指標。有青蛙棲息的地方，代表這裡的水是乾淨的——生態池裡的青蛙，是草堂有機種植最誠實的認證。</p>
+    <div class="mission">
+      <span class="mission-icon">👉</span>
+      <div class="mission-text">
+        <span class="mission-label">現場任務</span>
+        站在池邊安靜 10 秒，不說話——看看有沒有東西在動：水面的漣漪、葉片下的青蛙、或者掠過的蜻蜓。
       </div>
     </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
   </div>
 </section>
 
@@ -697,28 +670,226 @@ body {
     <div class="sec-body">
       距海 2 公里，颱風豪雨必積水。喬木無妨，但短期蔬菜沒有長腳，只能拉高位階。「韌性」，是這片菜園與極端氣候抗衡最重要的性格。
     </div>
-    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
-    <div class="interactive-zone">
-      <div class="quiz-container">
-        <p>💡 堂主考考你：為什麼菜園要把「位階拉高」？</p>
-        <div class="quiz-option" onclick="showAlert('這只是附帶的啦，主要為了排水！')">A. 比較好採收</div>
-        <div class="quiz-option" onclick="showAlert('答對了！避免強降雨淹死蔬菜。')">B. 避免強降雨導致積水</div>
+    <p class="fun-fact">小知識：氣候科學家把「能在極端降雨中仍維持生產力的農地」稱為「韌性農業」——草堂的高畦設計，是台灣西海岸小農應對氣候變遷的真實縮影。</p>
+    <div class="mission">
+      <span class="mission-icon">👉</span>
+      <div class="mission-text">
+        <span class="mission-label">現場任務</span>
+        蹲下來，用手感受菜床的高度——大概到你膝蓋還是大腿？這個高度，是草堂根據多年積水經驗算出來的。
       </div>
     </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
   </div>
 </section>
 
-<!-- 紀實牆 Padlet -->
-<section class="section" style="background:var(--paper-deep);">
+<!-- 12 麵包磚窯 -->
+<section class="section" id="oven">
   <div class="section-inner">
     <div class="sec-header">
+      <span class="sec-num">12</span>
       <div class="sec-title-group">
-        <span class="sec-emoji">📸</span>
-        <span class="sec-name">草堂紀實牆</span>
+        <span class="sec-emoji">🍕</span>
+        <div>
+          <span class="sec-name">麵包磚窯</span>
+          <span class="sec-tagline">草堂第十三景，一次三片披薩的溫度</span>
+        </div>
       </div>
     </div>
-    <p style="font-size:14px; color:var(--ink-60); margin-bottom:20px;">歡迎在這裡分享你拍下的草堂美好角落</p>
-    <iframe src="https://padlet.com/trista0919/padlet-ezlj6wik5qfkswgg" width="100%" height="550" frameborder="0" style="background:white; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.08);"></iframe>
+    <div class="sec-rule"></div>
+    <div class="sec-body">
+      這座磚窯緣自苑裡善群農莊。115 年 3 月 27 日，園丁長前往約取有機本土黑豆，首次見識到磚造麵包窯的獨特設計，殊有創意。徵得主人柯先生同意拍照取景後，在草堂複製，兩日得成。
+    </div>
+    <div class="callout">
+      <p>一次可烤 12 吋披薩三片。園丁長在新北時期曾參與過數個麵包窯製作，這一座是第一次在草堂自己動手完成的作品。磚與火，食物最古老的相遇方式。</p>
+    </div>
+    <!-- 磚窯 SVG 示意圖 -->
+    <div style="margin:24px 0;">
+      <svg viewBox="0 0 400 220" width="100%" style="max-width:400px;display:block;margin:0 auto;">
+        <!-- 地基 -->
+        <rect x="40" y="185" width="320" height="18" rx="3" fill="#c8a878" stroke="#8b6840" stroke-width="1"/>
+        <!-- 磚台座 -->
+        <rect x="60" y="148" width="280" height="40" rx="2" fill="#c8a878" stroke="#8b6840" stroke-width="1"/>
+        <!-- 磚縫橫線 -->
+        <line x1="60" y1="162" x2="340" y2="162" stroke="#8b6840" stroke-width=".6" opacity=".5"/>
+        <line x1="60" y1="176" x2="340" y2="176" stroke="#8b6840" stroke-width=".6" opacity=".5"/>
+        <!-- 磚縫縱線 -->
+        <line x1="130" y1="148" x2="130" y2="188" stroke="#8b6840" stroke-width=".6" opacity=".4"/>
+        <line x1="200" y1="148" x2="200" y2="188" stroke="#8b6840" stroke-width=".6" opacity=".4"/>
+        <line x1="270" y1="148" x2="270" y2="188" stroke="#8b6840" stroke-width=".6" opacity=".4"/>
+        <!-- 窯體半圓拱 -->
+        <path d="M80 148 Q80 48 200 48 Q320 48 320 148 Z" fill="#b89060" stroke="#8b6840" stroke-width="1.5"/>
+        <!-- 窯體磚紋裝飾 -->
+        <path d="M100 148 Q100 75 200 65 Q300 75 300 148" fill="none" stroke="#8b6840" stroke-width=".8" opacity=".4" stroke-dasharray="6 4"/>
+        <path d="M120 148 Q120 90 200 80 Q280 90 280 148" fill="none" stroke="#8b6840" stroke-width=".6" opacity=".3" stroke-dasharray="5 4"/>
+        <!-- 窯口 -->
+        <path d="M130 148 Q130 108 200 102 Q270 108 270 148 Z" fill="#2a2318" stroke="#8b6840" stroke-width="1.2"/>
+        <!-- 窯口內側火焰 -->
+        <path d="M175 142 Q178 125 185 130 Q188 115 195 120 Q198 108 205 118 Q210 112 215 125 Q220 130 222 142" fill="none" stroke="#c4634a" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+        <path d="M183 142 Q186 132 192 136 Q196 124 202 132 Q207 126 212 136 Q215 132 217 142" fill="#c8a040" fill-opacity=".3" stroke="#c9a040" stroke-width="1" stroke-linecap="round" opacity=".6"/>
+        <!-- 煙囪 -->
+        <rect x="186" y="32" width="28" height="20" rx="2" fill="#c8a878" stroke="#8b6840" stroke-width="1"/>
+        <rect x="182" y="27" width="36" height="8" rx="2" fill="#b89060" stroke="#8b6840" stroke-width="1"/>
+        <!-- 煙 -->
+        <path d="M196 24 Q192 14 197 6" stroke="#9c8f7a" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".5"/>
+        <path d="M204 22 Q210 12 205 4" stroke="#9c8f7a" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4"/>
+        <!-- 標示文字 -->
+        <text x="200" y="212" text-anchor="middle" font-size="10" fill="#5c4f3a" font-family="Noto Serif TC,serif" opacity=".7">磚造麵包窯 · 兩日得成</text>
+        <!-- 披薩標示 -->
+        <text x="200" y="138" text-anchor="middle" font-size="9" fill="rgba(245,240,230,.35)" font-family="Noto Sans TC,sans-serif">🍕 × 3</text>
+      </svg>
+      <p style="text-align:center;font-size:11px;color:rgba(30,26,20,.3);letter-spacing:.15em;margin-top:4px;font-family:'Noto Sans TC',sans-serif;">緣自苑裡善群農莊 · 複製於草堂 · 2025</p>
+    </div>
+    <div class="facts">
+      <span class="fact">磚造結構</span>
+      <span class="fact">一次三片 12 吋</span>
+      <span class="fact">兩日完工</span>
+      <span class="fact">緣自苑裡</span>
+    </div>
+    <p class="fun-fact">小知識：傳統磚窯能將熱能儲存在磚塊中，窯溫可達 400°C 以上——比一般家用烤箱高出一倍，這正是讓披薩餅皮瞬間酥脆的關鍵。</p>
+    <div class="mission">
+      <span class="mission-icon">👉</span>
+      <div class="mission-text">
+        <span class="mission-label">現場任務</span>
+        輕輕觸摸窯體外側與內側的紅磚，感受一下窯體內部的磚塊溫度感與外部是否不同？。
+      </div>
+    </div>
+    <a href="https://www.instagram.com/jinyuanorigin/" class="ig-btn">📸 查看紀實貼文 @jinyuanorigin</a>
+  </div>
+</section>
+
+<!-- IG 打卡挑戰 -->
+<section id="checkin" style="background:var(--ink); padding:72px 0 80px; position:relative; overflow:hidden;">
+
+  <!-- 淡水墨背景裝飾 -->
+  <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.06;pointer-events:none;" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="#f5f0e6" stroke-linecap="round">
+      <!-- 左側枯枝 -->
+      <path d="M60 500 Q58 440 55 390 Q52 330 58 270 Q61 230 59 180" stroke-width="5"/>
+      <path d="M55 380 Q36 365 18 360" stroke-width="3"/>
+      <path d="M57 310 Q76 296 92 292" stroke-width="3"/>
+      <path d="M58 250 Q44 232 28 226" stroke-width="2.5"/>
+      <path d="M59 210 Q74 196 88 192" stroke-width="2.5"/>
+      <!-- 梅花 -->
+      <circle cx="18" cy="358" r="7" stroke-width="1"/>
+      <circle cx="10" cy="349" r="4.5" stroke-width=".8"/>
+      <circle cx="26" cy="349" r="4.5" stroke-width=".8"/>
+      <circle cx="18" cy="343" r="4.5" stroke-width=".8"/>
+      <circle cx="92" cy="290" r="7" stroke-width="1"/>
+      <circle cx="84" cy="281" r="4.5" stroke-width=".8"/>
+      <circle cx="100" cy="281" r="4.5" stroke-width=".8"/>
+      <circle cx="92" cy="275" r="4.5" stroke-width=".8"/>
+      <!-- 右側大樹 -->
+      <path d="M740 500 Q737 450 734 405 Q730 355 735 300 Q738 260 736 210 Q733 170 737 130" stroke-width="6"/>
+      <path d="M733 400 Q712 385 692 380 Q676 376 662 382" stroke-width="3.5"/>
+      <path d="M735 340 Q756 326 774 322" stroke-width="3.5"/>
+      <path d="M734 285 Q716 268 698 264" stroke-width="3"/>
+      <path d="M736 240 Q752 224 768 220" stroke-width="3"/>
+      <!-- 葉群 -->
+      <ellipse cx="662" cy="380" rx="12" ry="8" transform="rotate(-10 662 380)" stroke-width=".8"/>
+      <ellipse cx="774" cy="320" rx="11" ry="7" transform="rotate(14 774 320)" stroke-width=".8"/>
+      <ellipse cx="698" cy="262" rx="10" ry="6" transform="rotate(-18 698 262)" stroke-width=".8"/>
+      <ellipse cx="768" cy="218" rx="9" ry="6" transform="rotate(20 768 218)" stroke-width=".8"/>
+      <ellipse cx="737" cy="128" rx="9" ry="7" stroke-width=".8"/>
+    </g>
+  </svg>
+
+  <div style="max-width:680px; margin:0 auto; padding:0 28px; position:relative; z-index:2;">
+
+    <!-- 標題 -->
+    <div style="text-align:center; margin-bottom:48px;">
+      <div style="font-size:10px; letter-spacing:.55em; color:rgba(245,240,230,.3); font-family:'Noto Sans TC',sans-serif; margin-bottom:14px;">JINYUAN ORIGIN · IG CHALLENGE</div>
+      <h2 style="font-size:clamp(26px,5vw,38px); font-weight:200; letter-spacing:.2em; color:var(--paper); line-height:1.3; margin-bottom:12px;">草 堂 打 卡 挑 戰</h2>
+      <p style="font-size:13px; font-weight:300; letter-spacing:.18em; color:rgba(245,240,230,.5);">把你在草堂的發現分享出去，讓更多人認識這片土地</p>
+    </div>
+
+    <!-- 三步驟 -->
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:40px;">
+
+      <div style="background:rgba(245,240,230,.06); border:.5px solid rgba(245,240,230,.12); border-radius:12px; padding:20px 16px; text-align:center;">
+        <div style="font-size:28px; margin-bottom:10px;">📍</div>
+        <div style="font-size:10px; letter-spacing:.35em; color:rgba(245,240,230,.3); font-family:'Noto Sans TC',sans-serif; margin-bottom:6px;">STEP 01</div>
+        <div style="font-size:13px; font-weight:400; color:var(--paper); letter-spacing:.1em; margin-bottom:6px; line-height:1.4;">走訪草堂<br>找到你的角落</div>
+        <div style="font-size:11px; color:rgba(245,240,230,.4); font-weight:300; line-height:1.6;">12 個據點<br>任選一個拍下來</div>
+      </div>
+
+      <div style="background:rgba(245,240,230,.06); border:.5px solid rgba(245,240,230,.12); border-radius:12px; padding:20px 16px; text-align:center;">
+        <div style="font-size:28px; margin-bottom:10px;">📸</div>
+        <div style="font-size:10px; letter-spacing:.35em; color:rgba(245,240,230,.3); font-family:'Noto Sans TC',sans-serif; margin-bottom:6px;">STEP 02</div>
+        <div style="font-size:13px; font-weight:400; color:var(--paper); letter-spacing:.1em; margin-bottom:6px; line-height:1.4;">上傳 IG<br>限時動態或貼文</div>
+        <div style="font-size:11px; color:rgba(245,240,230,.4); font-weight:300; line-height:1.6;">Tag<br><span style="color:rgba(245,240,230,.65);">@jinyuanorigin</span><br>加上 <span style="color:rgba(245,240,230,.65);">#今園草堂</span></div>
+      </div>
+
+      <div style="background:rgba(245,240,230,.06); border:.5px solid rgba(245,240,230,.12); border-radius:12px; padding:20px 16px; text-align:center;">
+        <div style="font-size:28px; margin-bottom:10px;">🎁</div>
+        <div style="font-size:10px; letter-spacing:.35em; color:rgba(245,240,230,.3); font-family:'Noto Sans TC',sans-serif; margin-bottom:6px;">STEP 03</div>
+        <div style="font-size:13px; font-weight:400; color:var(--paper); letter-spacing:.1em; margin-bottom:6px; line-height:1.4;">給堂主看一下<br>領取小農禮</div>
+        <div style="font-size:11px; color:rgba(245,240,230,.4); font-weight:300; line-height:1.6;">出示貼文或限動<br>即可兌換</div>
+      </div>
+
+    </div>
+
+    <!-- 獎勵說明 -->
+    <div style="background:rgba(245,240,230,.05); border:.5px solid rgba(245,240,230,.1); border-left:2px solid var(--gold-light); border-radius:0 8px 8px 0; padding:18px 22px; margin-bottom:36px;">
+      <div style="font-size:10px; letter-spacing:.35em; color:rgba(200,160,64,.7); font-family:'Noto Sans TC',sans-serif; margin-bottom:8px;">GIFT · 小農禮</div>
+      <div style="font-size:14px; color:var(--paper); font-weight:300; letter-spacing:.08em; line-height:1.9;">
+        🍃 &nbsp;當季農產小農禮包（季節限定）<br>
+        🐾 &nbsp;與羊過、羊貴妃近距離互動的機會
+      </div>
+      <div style="margin-top:10px; font-size:11px; color:rgba(245,240,230,.3); font-weight:300; letter-spacing:.08em;">* 每人限兌換一次 · 數量有限 · 以堂主現場判斷為準</div>
+    </div>
+
+    <!-- 特別挑戰任務 -->
+    <div style="margin-bottom:40px;">
+      <div style="font-size:10px; letter-spacing:.4em; color:rgba(245,240,230,.3); font-family:'Noto Sans TC',sans-serif; margin-bottom:16px; text-align:center;">SPECIAL MISSION · 特別任務</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+
+        <div style="background:rgba(245,240,230,.05); border:.5px solid rgba(245,240,230,.1); border-radius:8px; padding:14px 16px; display:flex; gap:10px; align-items:flex-start;">
+          <span style="font-size:20px; flex-shrink:0;">🪿</span>
+          <div>
+            <div style="font-size:12px; font-weight:400; color:var(--paper); letter-spacing:.08em; margin-bottom:4px;">讓鵝看你的鏡頭</div>
+            <div style="font-size:11px; color:rgba(245,240,230,.38); font-weight:300; line-height:1.6;">拍到四兄妹齊看鏡頭的瞬間，難度爆表</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(245,240,230,.05); border:.5px solid rgba(245,240,230,.1); border-radius:8px; padding:14px 16px; display:flex; gap:10px; align-items:flex-start;">
+          <span style="font-size:20px; flex-shrink:0;">🐑</span>
+          <div>
+            <div style="font-size:12px; font-weight:400; color:var(--paper); letter-spacing:.08em; margin-bottom:4px;">讓羊貴妃親你</div>
+            <div style="font-size:11px; color:rgba(245,240,230,.38); font-weight:300; line-height:1.6;">拍下羊貴妃湊近的那一刻</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(245,240,230,.05); border:.5px solid rgba(245,240,230,.1); border-radius:8px; padding:14px 16px; display:flex; gap:10px; align-items:flex-start;">
+          <span style="font-size:20px; flex-shrink:0;">🐸</span>
+          <div>
+            <div style="font-size:12px; font-weight:400; color:var(--paper); letter-spacing:.08em; margin-bottom:4px;">找到生態池裡的生命</div>
+            <div style="font-size:11px; color:rgba(245,240,230,.38); font-weight:300; line-height:1.6;">青蛙、水蟲、浮萍任一，拍下來</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(245,240,230,.05); border:.5px solid rgba(245,240,230,.1); border-radius:8px; padding:14px 16px; display:flex; gap:10px; align-items:flex-start;">
+          <span style="font-size:20px; flex-shrink:0;">🎋</span>
+          <div>
+            <div style="font-size:12px; font-weight:400; color:var(--paper); letter-spacing:.08em; margin-bottom:4px;">抱一根竹子量身高</div>
+            <div style="font-size:11px; color:rgba(245,240,230,.38); font-weight:300; line-height:1.6;">站在竹林裡比比看誰比較高</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CTA 按鈕 -->
+    <div style="text-align:center;">
+      <a href="https://www.instagram.com/jinyuanorigin/" target="_blank"
+         style="display:inline-flex; align-items:center; gap:10px; padding:14px 32px; border:.5px solid rgba(245,240,230,.3); border-radius:4px; color:var(--paper); text-decoration:none; font-size:13px; font-weight:300; letter-spacing:.2em; transition:.3s;"
+         onmouseover="this.style.background='rgba(245,240,230,.1)'"
+         onmouseout="this.style.background='transparent'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity:.7"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        前往 @jinyuanorigin
+      </a>
+      <p style="margin-top:14px; font-size:11px; color:rgba(245,240,230,.25); letter-spacing:.18em; font-family:'Noto Sans TC',sans-serif;">Tag 我們 · 讓更多人認識這片土地</p>
+    </div>
+
   </div>
 </section>
 
