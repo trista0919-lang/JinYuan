@@ -17,6 +17,42 @@
 .quiz-container { ... }
 .quiz-option { ... }
 .ig-story-btn { ... }
+.interactive-zone {
+  margin-top: 60px;        /* 調大！讓互動區跟上方的文字保持大一點的距離 */
+  padding: 30px 24px;      /* 調大內襯，讓裡面的東西不要貼邊 */
+  background: rgba(30, 26, 20, 0.02); /* 稍微調淡一點點 */
+  border-radius: 12px;
+  border: 0.5px dashed var(--ink-30);
+}
+
+.voice-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: 1px solid var(--ink-30);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-family: 'Noto Serif TC';
+  cursor: pointer;
+  margin-bottom: 40px;    font-size: 15px;
+  letter-spacing: 0.05em;
+}
+
+.quiz-container p {
+  margin-bottom: 20px;     font-weight: 500;
+  line-height: 1.6;
+}
+
+.quiz-option {
+  display: block;
+  padding: 14px 18px;       background: var(--paper);
+  border: 1px solid var(--ink-10);
+  margin-bottom: 12px;      cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+  border-radius: 6px;
+}
 
 <style>
 :root {
