@@ -191,7 +191,7 @@ body {
 .section {
   padding: 64px 0 80px;
   border-bottom: .5px solid var(--ink-10);
-  scroll-margin-top: 50px;
+  scroll-margin-top: 60px;
 }
 .section:nth-child(even) { background: var(--cream); }
 
@@ -568,20 +568,19 @@ body {
 
 <!-- ══ NAV ══ -->
 <nav class="nav-bar" id="nav-bar">
-  <div class="nav-item active" onclick="location.href='#s00'">🚽 環保廁所</div>
-  <div class="nav-item active" onclick="scrollTo('s01')"><span class="nav-emoji">🍍</span>鳳梨酵素</div>
-  <div class="nav-item" onclick="scrollTo('s02')"><span class="nav-emoji">💧</span>液肥</div>
-  <div class="nav-item" onclick="scrollTo('s03')"><span class="nav-emoji">🌿</span>廚餘堆肥</div>
-  <div class="nav-item" onclick="scrollTo('s04')"><span class="nav-emoji">🗼</span>蔬菜塔</div>
-  <div class="nav-item" onclick="scrollTo('s05')"><span class="nav-emoji">🎋</span>竹林</div>
-  <div class="nav-item" onclick="scrollTo('s06')"><span class="nav-emoji">🌾</span>風箱隔離帶</div>
-  <div class="nav-item" onclick="scrollTo('s07')"><span class="nav-emoji">🪿</span>白羅曼鵝</div>
-  <div class="nav-item" onclick="scrollTo('s08')"><span class="nav-emoji">🐑</span>土山羊</div>
-  <div class="nav-item" onclick="scrollTo('s09')"><span class="nav-emoji">🐔</span>雞舍日常</div>
-  <div class="nav-item" onclick="scrollTo('s10')"><span class="nav-emoji">🐸</span>生態池</div>
-  <div class="nav-item" onclick="scrollTo('s11')"><span class="nav-emoji">🥬</span>韌性菜園</div>
+  <div class="nav-item active" onclick="scrollToId('s00')">🚽 環保廁所</div>
+  <div class="nav-item" onclick="scrollToId('s01')">🍍 鳳梨酵素</div>
+  <div class="nav-item" onclick="scrollToId('s02')">💧 液肥製作</div>
+  <div class="nav-item" onclick="scrollToId('s03')">🌿 廚餘堆肥</div>
+  <div class="nav-item" onclick="scrollToId('s04')">🗼 蔬菜塔</div>
+  <div class="nav-item" onclick="scrollToId('s05')">🎋 竹林</div>
+  <div class="nav-item" onclick="scrollToId('s06')">🌾 隔離帶</div>
+  <div class="nav-item" onclick="scrollToId('s07')">🪿 白羅曼鵝</div>
+  <div class="nav-item" onclick="scrollToId('s08')">🐑 羊過貴妃</div>
+  <div class="nav-item" onclick="scrollToId('s09')">🐔 雞舍日常</div>
+  <div class="nav-item" onclick="scrollToId('s10')">🐸 生態池</div>
+  <div class="nav-item" onclick="scrollToId('s11')">🥬 韌性菜園</div>
 </nav>
-
 <!-- ══ SECTIONS ══ -->
 
 <!-- 00 環保廁所 -->
@@ -1003,28 +1002,47 @@ body {
 const sections = ['s01','s02','s03','s04','s05','s06','s07','s08','s09','s10','s11'];
 const navItems = document.querySelectorAll('.nav-item');
 
-function scrollTo(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+// 1. 點擊跳轉功能
+function scrollToId(id) {
+  const element = document.getElementById(id);
+  if (element) {
+    // 取得導覽列的高度，避免跳轉後標題被擋住
+    const navHeight = document.querySelector('.nav-bar').offsetHeight;
+    const elementPosition = element.offsetTop;
+    const offsetPosition = elementPosition - navHeight;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+  }
 }
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const idx = sections.indexOf(e.target.id);
-      if (idx >= 0) {
-        navItems.forEach((n,i) => n.classList.toggle('active', i === idx));
-        // scroll nav item into view
-        navItems[idx]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
+// 2. 自動追蹤滾動：滑到哪，導覽列就亮到哪
+window.addEventListener('scroll', () => {
+  let current = "";
+  const sections = document.querySelectorAll('section.section');
+  const navItems = document.querySelectorAll('.nav-item');
+  const navHeight = document.querySelector('.nav-bar').offsetHeight;
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    // 如果捲動位置超過了該區塊的頂部（扣除導覽列高度）
+    if (pageYOffset >= sectionTop - navHeight - 10) {
+      current = section.getAttribute('id');
     }
   });
-}, { threshold: 0.4, rootMargin: '-50px 0px -40% 0px' });
 
-sections.forEach(id => {
-  const el = document.getElementById(id);
-  if (el) observer.observe(el);
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    // 檢查 onclick 屬性中是否包含當前的 ID
+    if (item.getAttribute('onclick').includes(current)) {
+      item.classList.add('active');
+      // 讓導覽列在手機上也會自動橫向捲動到亮起的那個按鈕
+      item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  });
 });
-
 // ── IG Modal ──
 let currentIGUrl = 'https://www.instagram.com/jinyuan_caotang/';
 
